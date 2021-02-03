@@ -14,7 +14,7 @@ import UIKit
 
 protocol MainBusinessLogic
 {
-    func doSomething(request: Main.Something.Request)
+    func getList()
 }
 
 protocol MainDataStore
@@ -25,17 +25,31 @@ protocol MainDataStore
 class MainInteractor: MainBusinessLogic, MainDataStore
 {
     var presenter: MainPresentationLogic?
-    var worker: MainWorker?
+    var worker = MainWorker()
     //var name: String = ""
+    var list: List?
     
     // MARK: Do something
     
-    func doSomething(request: Main.Something.Request)
+//    func doSomething(request: Main.Something.Request)
+//    {
+//        worker = MainWorker()
+//        worker?.doSomeWork()
+//
+//        let response = Main.Something.Response()
+//        presenter?.presentSomething(response: response)
+//    }
+    
+    func getList()
     {
-        worker = MainWorker()
-        worker?.doSomeWork()
-        
-        let response = Main.Something.Response()
-        presenter?.presentSomething(response: response)
+        FBDatabase.list { (obj) in
+            List.get(obj: obj!)
+//            if let list = obj{
+////                self.list = list
+//                print(self.list)
+//            }
+//            else{/* failure */}
+        }
     }
+    
 }

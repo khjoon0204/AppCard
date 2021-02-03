@@ -39,6 +39,18 @@
 		F421870425CA5BCD00212456 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F421870325CA5BCD00212456 /* GoogleService-Info.plist */; };
 		F421870525CA5BCD00212456 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F421870325CA5BCD00212456 /* GoogleService-Info.plist */; };
 		F421870625CA5BCD00212456 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F421870325CA5BCD00212456 /* GoogleService-Info.plist */; };
+		F4D3EB8025CAB45A004C58E6 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D3EB7F25CAB45A004C58E6 /* UIColor+Extension.swift */; };
+		F4D3EB8125CAB45A004C58E6 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D3EB7F25CAB45A004C58E6 /* UIColor+Extension.swift */; };
+		F4D3EB8225CAB45A004C58E6 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D3EB7F25CAB45A004C58E6 /* UIColor+Extension.swift */; };
+		F4D3EB8C25CAC5B3004C58E6 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D3EB8B25CAC5B3004C58E6 /* List.swift */; };
+		F4D3EB8D25CAC5B3004C58E6 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D3EB8B25CAC5B3004C58E6 /* List.swift */; };
+		F4D3EB8E25CAC5B3004C58E6 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D3EB8B25CAC5B3004C58E6 /* List.swift */; };
+		F4D3EB9625CAC7C2004C58E6 /* FBStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D3EB9525CAC7C2004C58E6 /* FBStorage.swift */; };
+		F4D3EB9725CAC7C2004C58E6 /* FBStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D3EB9525CAC7C2004C58E6 /* FBStorage.swift */; };
+		F4D3EB9825CAC7C2004C58E6 /* FBStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D3EB9525CAC7C2004C58E6 /* FBStorage.swift */; };
+		F4D3EB9D25CAC7D1004C58E6 /* FBDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D3EB9C25CAC7D1004C58E6 /* FBDatabase.swift */; };
+		F4D3EB9E25CAC7D1004C58E6 /* FBDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D3EB9C25CAC7D1004C58E6 /* FBDatabase.swift */; };
+		F4D3EB9F25CAC7D1004C58E6 /* FBDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D3EB9C25CAC7D1004C58E6 /* FBDatabase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +95,10 @@
 		F42186D925CA571900212456 /* MainInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractor.swift; sourceTree = "<group>"; };
 		F42186F225CA57DC00212456 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		F421870325CA5BCD00212456 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F4D3EB7F25CAB45A004C58E6 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		F4D3EB8B25CAC5B3004C58E6 /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
+		F4D3EB9525CAC7C2004C58E6 /* FBStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBStorage.swift; sourceTree = "<group>"; };
+		F4D3EB9C25CAC7D1004C58E6 /* FBDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBDatabase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +169,8 @@
 		F421867F25CA521400212456 /* AppCard */ = {
 			isa = PBXGroup;
 			children = (
+				F4D3EB8A25CAC582004C58E6 /* Model */,
+				F4D3EB7E25CAB42E004C58E6 /* Extension */,
 				F42186FF25CA5A1800212456 /* Service */,
 				F42186D225CA56CF00212456 /* Scene */,
 				F421868025CA521400212456 /* AppDelegate.swift */,
@@ -209,8 +227,26 @@
 		F42186FF25CA5A1800212456 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				F4D3EB9525CAC7C2004C58E6 /* FBStorage.swift */,
+				F4D3EB9C25CAC7D1004C58E6 /* FBDatabase.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		F4D3EB7E25CAB42E004C58E6 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F4D3EB7F25CAB45A004C58E6 /* UIColor+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		F4D3EB8A25CAC582004C58E6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F4D3EB8B25CAC5B3004C58E6 /* List.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -375,12 +411,16 @@
 				F421868125CA521400212456 /* AppDelegate.swift in Sources */,
 				F421868325CA521400212456 /* SceneDelegate.swift in Sources */,
 				F42186DD25CA571900212456 /* MainWorker.swift in Sources */,
+				F4D3EB9625CAC7C2004C58E6 /* FBStorage.swift in Sources */,
 				F42186DA25CA571900212456 /* MainPresenter.swift in Sources */,
+				F4D3EB9D25CAC7D1004C58E6 /* FBDatabase.swift in Sources */,
 				F42186E925CA571900212456 /* MainInteractor.swift in Sources */,
 				F42186E325CA571900212456 /* MainModels.swift in Sources */,
+				F4D3EB8C25CAC5B3004C58E6 /* List.swift in Sources */,
 				F42186E025CA571900212456 /* MainRouter.swift in Sources */,
 				F42186E625CA571900212456 /* MainViewController.swift in Sources */,
 				F42186F325CA57DC00212456 /* Config.swift in Sources */,
+				F4D3EB8025CAB45A004C58E6 /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,8 +429,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				F421869825CA521500212456 /* AppCardTests.swift in Sources */,
+				F4D3EB9725CAC7C2004C58E6 /* FBStorage.swift in Sources */,
 				F42186E125CA571900212456 /* MainRouter.swift in Sources */,
 				F42186E425CA571900212456 /* MainModels.swift in Sources */,
+				F4D3EB9E25CAC7D1004C58E6 /* FBDatabase.swift in Sources */,
+				F4D3EB8D25CAC5B3004C58E6 /* List.swift in Sources */,
+				F4D3EB8125CAB45A004C58E6 /* UIColor+Extension.swift in Sources */,
 				F42186F425CA57DC00212456 /* Config.swift in Sources */,
 				F42186E725CA571900212456 /* MainViewController.swift in Sources */,
 				F42186DE25CA571900212456 /* MainWorker.swift in Sources */,
@@ -404,8 +448,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				F42186A325CA521500212456 /* AppCardUITests.swift in Sources */,
+				F4D3EB9825CAC7C2004C58E6 /* FBStorage.swift in Sources */,
 				F42186E225CA571900212456 /* MainRouter.swift in Sources */,
 				F42186E525CA571900212456 /* MainModels.swift in Sources */,
+				F4D3EB9F25CAC7D1004C58E6 /* FBDatabase.swift in Sources */,
+				F4D3EB8E25CAC5B3004C58E6 /* List.swift in Sources */,
+				F4D3EB8225CAB45A004C58E6 /* UIColor+Extension.swift in Sources */,
 				F42186F525CA57DC00212456 /* Config.swift in Sources */,
 				F42186E825CA571900212456 /* MainViewController.swift in Sources */,
 				F42186DF25CA571900212456 /* MainWorker.swift in Sources */,

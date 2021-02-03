@@ -13,7 +13,7 @@ import Foundation
         return Config.instance
     }
     let PRINT_PREFIX = "Log: "
-//    static let mainSearchUrl = "http://search-tour.interpark.com/#/"
+    static let imageHost = "gs://appcard-6d81f.appspot.com"
     
     // Required
     let userName: String

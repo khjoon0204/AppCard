@@ -14,7 +14,7 @@ import UIKit
 
 protocol MainDisplayLogic: class
 {
-    func displaySomething(viewModel: Main.Something.ViewModel)
+//    func displaySomething(viewModel: Main.Something.ViewModel)
 }
 
 class MainViewController: UIViewController, MainDisplayLogic
@@ -69,21 +69,23 @@ class MainViewController: UIViewController, MainDisplayLogic
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        doSomething()
+//        doSomething()
+        interactor?.getList()
+        
     }
     
     // MARK: Do something
     
     //@IBOutlet weak var nameTextField: UITextField!
     
-    func doSomething()
-    {
-        let request = Main.Something.Request()
-        interactor?.doSomething(request: request)
-    }
+//    func doSomething()
+//    {
+//        let request = Main.Something.Request()
+//        interactor?.doSomething(request: request)
+//    }
     
-    func displaySomething(viewModel: Main.Something.ViewModel)
-    {
-        //nameTextField.text = viewModel.name
-    }
+//    func displaySomething(viewModel: Main.Something.ViewModel)
+//    {
+//        //nameTextField.text = viewModel.name
+//    }
 }

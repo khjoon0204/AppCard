@@ -16,16 +16,18 @@ enum Main
 {
     // MARK: Use cases
     
-    enum Something
+    enum GetList
     {
         struct Request
         {
         }
         struct Response
         {
+            var list: List
         }
         struct ViewModel
         {
+            var list: List
         }
     }
 }
