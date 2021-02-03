@@ -1,0 +1,12 @@
+platform :ios, '10.0'
+
+def pod_list
+    pod 'Firebase/Database'
+    pod 'Firebase/Storage'
+end
+
+target 'AppCard' do
+    pod_list
+end
+
+
