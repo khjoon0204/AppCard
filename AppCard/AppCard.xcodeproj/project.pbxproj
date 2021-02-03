@@ -36,6 +36,9 @@
 		F42186F325CA57DC00212456 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42186F225CA57DC00212456 /* Config.swift */; };
 		F42186F425CA57DC00212456 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42186F225CA57DC00212456 /* Config.swift */; };
 		F42186F525CA57DC00212456 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42186F225CA57DC00212456 /* Config.swift */; };
+		F421870425CA5BCD00212456 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F421870325CA5BCD00212456 /* GoogleService-Info.plist */; };
+		F421870525CA5BCD00212456 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F421870325CA5BCD00212456 /* GoogleService-Info.plist */; };
+		F421870625CA5BCD00212456 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F421870325CA5BCD00212456 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +82,7 @@
 		F42186D825CA571900212456 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F42186D925CA571900212456 /* MainInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractor.swift; sourceTree = "<group>"; };
 		F42186F225CA57DC00212456 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		F421870325CA5BCD00212456 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +162,7 @@
 				F421868925CA521500212456 /* Assets.xcassets */,
 				F421868B25CA521500212456 /* LaunchScreen.storyboard */,
 				F421868E25CA521500212456 /* Info.plist */,
+				F421870325CA5BCD00212456 /* GoogleService-Info.plist */,
 			);
 			path = AppCard;
 			sourceTree = "<group>";
@@ -312,6 +317,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F421870425CA5BCD00212456 /* GoogleService-Info.plist in Resources */,
 				F421868D25CA521500212456 /* LaunchScreen.storyboard in Resources */,
 				F421868A25CA521500212456 /* Assets.xcassets in Resources */,
 				F421868825CA521400212456 /* Main.storyboard in Resources */,
@@ -322,6 +328,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F421870525CA5BCD00212456 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,6 +336,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F421870625CA5BCD00212456 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

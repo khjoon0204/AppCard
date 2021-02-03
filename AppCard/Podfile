@@ -1,5 +1,8 @@
 platform :ios, '10.0'
 
+# add pods for desired Firebase products
+# https://firebase.google.com/docs/ios/setup#available-pods
+
 def pod_list
     pod 'Firebase/Database'
     pod 'Firebase/Storage'
