@@ -23,7 +23,8 @@ class MainViewController: UIViewController, MainDisplayLogic
     @IBOutlet weak var swipeView: UIView!
     @IBOutlet weak var swipeViewBottom: NSLayoutConstraint!
     @IBOutlet weak var swipeViewHeight: NSLayoutConstraint!
-    let SWIPE_TOP_LIMIT: CGFloat = 0
+    @IBOutlet weak var headerView: UIView!
+    lazy var SWIPE_TOP_LIMIT: CGFloat = headerView.frame.height
     lazy var SWIPE_BOTTOM_LIMIT: CGFloat = view.frame.height - (swipeViewHeight.constant - swipeViewBottom.constant)
     var interactor: MainBusinessLogic?
     var router: (NSObjectProtocol & MainRoutingLogic & MainDataPassing)?

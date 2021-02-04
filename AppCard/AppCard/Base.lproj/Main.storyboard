@@ -13,16 +13,23 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="AppCard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rUP-Uo-Cew">
+                                <rect key="frame" x="0.0" y="44" width="414" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="e9O-rK-o0g"/>
+                                </constraints>
+                            </view>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dna-Hz-czL">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gT4-25-Akr">
-                                <rect key="frame" x="0.0" y="624" width="414" height="800"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <rect key="frame" x="0.0" y="712" width="414" height="800"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="800" id="4aG-Vj-ui1"/>
                                 </constraints>
@@ -34,13 +41,16 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemTealColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="gT4-25-Akr" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="9jB-8u-ahm"/>
                             <constraint firstAttribute="bottom" secondItem="Dna-Hz-czL" secondAttribute="bottom" id="Dy0-Wl-1tM"/>
+                            <constraint firstItem="rUP-Uo-Cew" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="GOg-J8-gQj"/>
+                            <constraint firstItem="rUP-Uo-Cew" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="TUw-bV-Z8g"/>
                             <constraint firstItem="Dna-Hz-czL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="XJW-Cu-SgI"/>
                             <constraint firstItem="Dna-Hz-czL" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="b0M-Ns-rTi"/>
                             <constraint firstItem="Dna-Hz-czL" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="iCQ-u5-i31"/>
+                            <constraint firstItem="rUP-Uo-Cew" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="iNT-7t-FIP"/>
                             <constraint firstItem="gT4-25-Akr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="qkA-hY-2lH"/>
                             <constraint firstItem="gT4-25-Akr" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="650" id="u0p-bY-pcH"/>
                         </constraints>
@@ -48,6 +58,7 @@
                     <navigationItem key="navigationItem" id="wY6-Ug-k1T"/>
                     <connections>
                         <outlet property="dimView" destination="Dna-Hz-czL" id="m2D-6I-59Z"/>
+                        <outlet property="headerView" destination="rUP-Uo-Cew" id="KsF-S0-wKC"/>
                         <outlet property="swipeView" destination="gT4-25-Akr" id="Hv1-nV-hpI"/>
                         <outlet property="swipeViewBottom" destination="u0p-bY-pcH" id="gWz-mr-eZF"/>
                         <outlet property="swipeViewHeight" destination="4aG-Vj-ui1" id="wUy-in-rNC"/>
@@ -60,13 +71,15 @@
         <!--Navigation Controller-->
         <scene sceneID="jX9-VQ-aTp">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xf6-bs-WDe" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="xf6-bs-WDe" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="T0s-eS-J2l">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wCI-0J-Y9A">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Y2A-es-G5b"/>
                     </connections>
@@ -79,9 +92,6 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemTealColor">
-            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
