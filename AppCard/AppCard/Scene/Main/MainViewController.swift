@@ -19,8 +19,15 @@ protocol MainDisplayLogic: class
 
 class MainViewController: UIViewController, MainDisplayLogic
 {
+    @IBOutlet weak var dimView: UIView!
+    @IBOutlet weak var swipeView: UIView!
+    @IBOutlet weak var swipeViewBottom: NSLayoutConstraint!
+    @IBOutlet weak var swipeViewHeight: NSLayoutConstraint!
+    let SWIPE_TOP_LIMIT: CGFloat = 0
+    lazy var SWIPE_BOTTOM_LIMIT: CGFloat = view.frame.height - (swipeViewHeight.constant - swipeViewBottom.constant)
     var interactor: MainBusinessLogic?
     var router: (NSObjectProtocol & MainRoutingLogic & MainDataPassing)?
+    lazy var prePosition: CGFloat = swipeView.frame.origin.y
     
     // MARK: Object lifecycle
     
@@ -69,9 +76,57 @@ class MainViewController: UIViewController, MainDisplayLogic
     override func viewDidLoad()
     {
         super.viewDidLoad()
-//        doSomething()
+        
+        setupSwipeView()
         interactor?.getList()
         
+    }
+    
+    func setupSwipeView(){
+        let swipe = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
+        swipeView.addGestureRecognizer(swipe)
+    }
+    
+    @objc func handlePan(_ recognizer: UIPanGestureRecognizer){
+        moveSwipeView(recognizer)
+        dimming()
+        moveToEdge(recognizer)
+    }
+    
+    // MARK: Swipe
+    private func moveToEdge(_ recognizer: UIPanGestureRecognizer){
+        guard recognizer.state == .ended else {return}
+        let toTop = swipeView.frame.origin.y < (view.frame.height)/2
+        UIView.animate(withDuration: 0.5) {
+            self.swipeView.frame.origin.y = toTop ? self.SWIPE_TOP_LIMIT : self.SWIPE_BOTTOM_LIMIT
+            self.dimming()
+        } completion: { (success) in
+            
+        }
+    }
+    
+    private func dimming(){
+        let div = swipeView.frame.origin.y / (SWIPE_BOTTOM_LIMIT - SWIPE_TOP_LIMIT)
+//        print("dimView.alpha=\(dimView.alpha) swipeView.frame.origin.y=\(swipeView.frame.origin.y) / view.frame.height=\(view.frame.height) div=\(div)")
+        dimView.alpha = 1 - div
+    }
+    
+    private func moveSwipeView(_ recognizer: UIPanGestureRecognizer){
+        let y = swipeView.frame.origin.y
+//        let isUP = prePosition > y
+        let isTopOver = (y < SWIPE_TOP_LIMIT)
+        let isBotBelow = (y > SWIPE_BOTTOM_LIMIT)
+        defer{
+            prePosition = y
+            recognizer.setTranslation(.zero, in: swipeView)
+        }
+        guard !isBotBelow else {swipeView.frame.origin.y = SWIPE_BOTTOM_LIMIT;return}
+        guard !isTopOver else {swipeView.frame.origin.y = SWIPE_TOP_LIMIT;return}
+        let moveY = swipeView.frame.origin.y + recognizer.translation(in: swipeView).y
+//        print("swipeView.y=\(swipeView.frame.origin.y) moveY=\(moveY) isUP=\(isUP) isTopOver=\(isTopOver) isBotBelow=\(isBotBelow)")
+        guard moveY <= SWIPE_BOTTOM_LIMIT else {return}
+        guard moveY >= SWIPE_TOP_LIMIT else {return}
+        swipeView.frame.origin.y = moveY
     }
     
     // MARK: Do something
