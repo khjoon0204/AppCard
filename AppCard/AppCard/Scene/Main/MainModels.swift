@@ -14,6 +14,54 @@ import UIKit
 
 enum Main
 {
+    struct List{
+        var list: [ListElement] = []
+        
+        // MARK: - ListElement
+        struct ListElement: Codable {
+            var category : CategoryType?
+            var displayType: DisplayType?
+            var updateDate, expireDate, dDayDate, corpName: String?
+            var display: Display?
+        }
+        
+        // MARK: - Display
+        struct Display: Codable {
+            var headerTitle, mainTitle, subTitle, backImg: String?
+            var labelImg, centerImg: String?
+            var mainColor, fontColor: String?
+            var labelText, iconImg, size, title: String?
+            var rightImg: String?
+        }
+        
+        enum CategoryType: String, Codable{
+            case noti
+            case coupon
+            case shop
+            case feature
+            case news
+        }
+
+        enum DisplayType: String, Codable{
+            case `default`
+            case noBack
+            case none
+        }
+        
+        init(objs: [AnyObject]) {
+            var eles: [ListElement] = []
+            for i in objs{
+                var ele = ListElement()
+                if let category = i["category"] as? String{ ele.category = CategoryType(rawValue: category) }
+                if let d = i["display"] as? [String:AnyObject]{
+                    if let desc = d["desc"] as? String{ print(desc) }
+                }
+                eles.append(ele)
+            }
+            self.list = eles
+        }
+    }
+    
     // MARK: Use cases
     
     enum GetList

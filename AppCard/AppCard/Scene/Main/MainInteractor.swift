@@ -27,7 +27,7 @@ class MainInteractor: MainBusinessLogic, MainDataStore
     var presenter: MainPresentationLogic?
     var worker = MainWorker()
     //var name: String = ""
-    var list: List?
+    var list: Main.List?
     
     // MARK: Do something
     
@@ -42,14 +42,13 @@ class MainInteractor: MainBusinessLogic, MainDataStore
     
     func getList()
     {
-        FBDatabase.list { (obj) in
-            List.get(obj: obj!)
-//            if let list = obj{
-////                self.list = list
-//                print(self.list)
-//            }
-//            else{/* failure */}
+        worker.list { (list) in
+            if let list = list{
+                self.list = list
+            }
+            else{ /* failure */ }
         }
+        
     }
     
 }

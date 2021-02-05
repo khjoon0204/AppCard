@@ -14,5 +14,12 @@ import UIKit
 
 class MainWorker
 {
-
+    func list(completion: ((Main.List?) -> Void)?){
+        FBDatabase.list { (objs) in
+            if let objs = objs, case let list = Main.List(objs: objs), list.list.count > 0{
+                completion?(list)
+            }
+            else{ print("아이템 갯수=0"); completion?(nil) }
+        }
+    }
 }
