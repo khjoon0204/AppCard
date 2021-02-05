@@ -19,6 +19,7 @@ protocol MainDisplayLogic: class
 
 class MainViewController: UIViewController, MainDisplayLogic
 {
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var dimView: UIView!
     @IBOutlet weak var swipeView: UIView!
     @IBOutlet weak var swipeViewBottom: NSLayoutConstraint!
@@ -84,6 +85,7 @@ class MainViewController: UIViewController, MainDisplayLogic
     }
     
     func setupSwipeView(){
+        swipeView.layer.applySketchShadow(color: .black, alpha: 0.1, x: 0, y: -30, blur: 30, spread: 0)
         let swipe = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
         swipeView.addGestureRecognizer(swipe)
     }
@@ -145,3 +147,25 @@ class MainViewController: UIViewController, MainDisplayLogic
 //        //nameTextField.text = viewModel.name
 //    }
 }
+
+//// MARK: - UITableView
+//extension MainViewController: UITableViewDelegate, UITableViewDataSource{
+//
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return interactor?.getList()
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        guard let cityGroup = cityGroup else {return UITableViewCell()}
+//        return FITAllCitiesCountryCell.config(delegateTargetTo: self, tableView, cellForItemAt: indexPath, dataSource: cityGroup)
+//    }
+//    
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        print(indexPath)
+//    }
+//
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return UITableView.automaticDimension
+//    }
+//
+//}

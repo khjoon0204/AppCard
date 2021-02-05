@@ -15,6 +15,7 @@ import UIKit
 protocol MainBusinessLogic
 {
     func getList()
+    func _list() -> Main.List?
 }
 
 protocol MainDataStore
@@ -48,7 +49,12 @@ class MainInteractor: MainBusinessLogic, MainDataStore
             }
             else{ /* failure */ }
         }
-        
+    }
+    
+    // MARK: Getter
+    func _list() -> Main.List?
+    {
+        return self.list
     }
     
 }
