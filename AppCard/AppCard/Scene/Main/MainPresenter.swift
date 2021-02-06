@@ -14,7 +14,7 @@ import UIKit
 
 protocol MainPresentationLogic
 {
-//    func presentSomething(response: Main.Something.Response)
+    func presentGetList(response: Main.GetList.Response)
 }
 
 class MainPresenter: MainPresentationLogic
@@ -23,9 +23,10 @@ class MainPresenter: MainPresentationLogic
     
     // MARK: Do something
     
-//    func presentSomething(response: Main.Something.Response)
-//    {
-//        let viewModel = Main.Something.ViewModel()
-//        viewController?.displaySomething(viewModel: viewModel)
-//    }
+    func presentGetList(response: Main.GetList.Response)
+    {
+        let viewModel = Main.GetList.ViewModel(list: response.list)
+        viewController?.displayGetList(viewModel: viewModel)
+    }
+    
 }

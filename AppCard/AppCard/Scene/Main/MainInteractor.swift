@@ -15,6 +15,7 @@ import UIKit
 protocol MainBusinessLogic
 {
     func getList()
+    func nextPage()
     func _list() -> Main.List?
 }
 
@@ -28,27 +29,26 @@ class MainInteractor: MainBusinessLogic, MainDataStore
     var presenter: MainPresentationLogic?
     var worker = MainWorker()
     //var name: String = ""
-    var list: Main.List?
-    
-    // MARK: Do something
-    
-//    func doSomething(request: Main.Something.Request)
-//    {
-//        worker = MainWorker()
-//        worker?.doSomeWork()
-//
-//        let response = Main.Something.Response()
-//        presenter?.presentSomething(response: response)
-//    }
+    private(set) var list = Main.List(list: [])
+    private(set) var curPage: Int = 0
     
     func getList()
     {
-        worker.list { (list) in
+        worker.listPagination(startingAt: String(curPage * 10)) { (list) in
             if let list = list{
-                self.list = list
+                self.list.append(contensOf: list)
+                print(list.list.count)
+                let response = Main.GetList.Response(list: list)
+                self.presenter?.presentGetList(response: response)
             }
             else{ /* failure */ }
         }
+    }
+    
+    func nextPage()
+    {
+        curPage += 1
+        getList()
     }
     
     // MARK: Getter

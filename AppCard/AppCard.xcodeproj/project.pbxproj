@@ -45,6 +45,15 @@
 		F49DA51925CD674600FF936C /* CALayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49DA51825CD674600FF936C /* CALayer+Extension.swift */; };
 		F49DA51A25CD674600FF936C /* CALayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49DA51825CD674600FF936C /* CALayer+Extension.swift */; };
 		F49DA51B25CD674600FF936C /* CALayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49DA51825CD674600FF936C /* CALayer+Extension.swift */; };
+		F49DECC625CE539000DB8621 /* DateFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49DECC525CE539000DB8621 /* DateFormatter+Extension.swift */; };
+		F49DECC725CE539000DB8621 /* DateFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49DECC525CE539000DB8621 /* DateFormatter+Extension.swift */; };
+		F49DECC825CE539000DB8621 /* DateFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49DECC525CE539000DB8621 /* DateFormatter+Extension.swift */; };
+		F49DECD025CE8B2200DB8621 /* MainNotiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49DECCF25CE8B2200DB8621 /* MainNotiCell.swift */; };
+		F49DECD125CE8B2200DB8621 /* MainNotiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49DECCF25CE8B2200DB8621 /* MainNotiCell.swift */; };
+		F49DECD225CE8B2200DB8621 /* MainNotiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49DECCF25CE8B2200DB8621 /* MainNotiCell.swift */; };
+		F49DECD725CE8B4400DB8621 /* MainNoBackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49DECD625CE8B4400DB8621 /* MainNoBackCell.swift */; };
+		F49DECD825CE8B4400DB8621 /* MainNoBackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49DECD625CE8B4400DB8621 /* MainNoBackCell.swift */; };
+		F49DECD925CE8B4400DB8621 /* MainNoBackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49DECD625CE8B4400DB8621 /* MainNoBackCell.swift */; };
 		F4D3EB8025CAB45A004C58E6 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D3EB7F25CAB45A004C58E6 /* UIColor+Extension.swift */; };
 		F4D3EB8125CAB45A004C58E6 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D3EB7F25CAB45A004C58E6 /* UIColor+Extension.swift */; };
 		F4D3EB8225CAB45A004C58E6 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D3EB7F25CAB45A004C58E6 /* UIColor+Extension.swift */; };
@@ -100,6 +109,9 @@
 		F421870325CA5BCD00212456 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F49DA51125CD60A300FF936C /* MainListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainListCell.swift; sourceTree = "<group>"; };
 		F49DA51825CD674600FF936C /* CALayer+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CALayer+Extension.swift"; sourceTree = "<group>"; };
+		F49DECC525CE539000DB8621 /* DateFormatter+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extension.swift"; sourceTree = "<group>"; };
+		F49DECCF25CE8B2200DB8621 /* MainNotiCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNotiCell.swift; sourceTree = "<group>"; };
+		F49DECD625CE8B4400DB8621 /* MainNoBackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNoBackCell.swift; sourceTree = "<group>"; };
 		F4D3EB7F25CAB45A004C58E6 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		F4D3EB9525CAC7C2004C58E6 /* FBStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBStorage.swift; sourceTree = "<group>"; };
 		F4D3EB9C25CAC7D1004C58E6 /* FBDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBDatabase.swift; sourceTree = "<group>"; };
@@ -241,6 +253,8 @@
 			isa = PBXGroup;
 			children = (
 				F49DA51125CD60A300FF936C /* MainListCell.swift */,
+				F49DECCF25CE8B2200DB8621 /* MainNotiCell.swift */,
+				F49DECD625CE8B4400DB8621 /* MainNoBackCell.swift */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -250,6 +264,7 @@
 			children = (
 				F4D3EB7F25CAB45A004C58E6 /* UIColor+Extension.swift */,
 				F49DA51825CD674600FF936C /* CALayer+Extension.swift */,
+				F49DECC525CE539000DB8621 /* DateFormatter+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -421,9 +436,12 @@
 				F42186DA25CA571900212456 /* MainPresenter.swift in Sources */,
 				F4D3EB9D25CAC7D1004C58E6 /* FBDatabase.swift in Sources */,
 				F42186E925CA571900212456 /* MainInteractor.swift in Sources */,
+				F49DECD725CE8B4400DB8621 /* MainNoBackCell.swift in Sources */,
+				F49DECC625CE539000DB8621 /* DateFormatter+Extension.swift in Sources */,
 				F42186E325CA571900212456 /* MainModels.swift in Sources */,
 				F49DA51925CD674600FF936C /* CALayer+Extension.swift in Sources */,
 				F42186E025CA571900212456 /* MainRouter.swift in Sources */,
+				F49DECD025CE8B2200DB8621 /* MainNotiCell.swift in Sources */,
 				F42186E625CA571900212456 /* MainViewController.swift in Sources */,
 				F42186F325CA57DC00212456 /* Config.swift in Sources */,
 				F4D3EB8025CAB45A004C58E6 /* UIColor+Extension.swift in Sources */,
@@ -436,14 +454,17 @@
 			files = (
 				F421869825CA521500212456 /* AppCardTests.swift in Sources */,
 				F4D3EB9725CAC7C2004C58E6 /* FBStorage.swift in Sources */,
+				F49DECD825CE8B4400DB8621 /* MainNoBackCell.swift in Sources */,
 				F42186E125CA571900212456 /* MainRouter.swift in Sources */,
 				F42186E425CA571900212456 /* MainModels.swift in Sources */,
 				F4D3EB9E25CAC7D1004C58E6 /* FBDatabase.swift in Sources */,
 				F4D3EB8125CAB45A004C58E6 /* UIColor+Extension.swift in Sources */,
 				F49DA51325CD60A300FF936C /* MainListCell.swift in Sources */,
+				F49DECD125CE8B2200DB8621 /* MainNotiCell.swift in Sources */,
 				F42186F425CA57DC00212456 /* Config.swift in Sources */,
 				F42186E725CA571900212456 /* MainViewController.swift in Sources */,
 				F42186DE25CA571900212456 /* MainWorker.swift in Sources */,
+				F49DECC725CE539000DB8621 /* DateFormatter+Extension.swift in Sources */,
 				F42186EA25CA571900212456 /* MainInteractor.swift in Sources */,
 				F42186DB25CA571900212456 /* MainPresenter.swift in Sources */,
 				F49DA51A25CD674600FF936C /* CALayer+Extension.swift in Sources */,
@@ -456,14 +477,17 @@
 			files = (
 				F42186A325CA521500212456 /* AppCardUITests.swift in Sources */,
 				F4D3EB9825CAC7C2004C58E6 /* FBStorage.swift in Sources */,
+				F49DECD925CE8B4400DB8621 /* MainNoBackCell.swift in Sources */,
 				F42186E225CA571900212456 /* MainRouter.swift in Sources */,
 				F42186E525CA571900212456 /* MainModels.swift in Sources */,
 				F4D3EB9F25CAC7D1004C58E6 /* FBDatabase.swift in Sources */,
 				F4D3EB8225CAB45A004C58E6 /* UIColor+Extension.swift in Sources */,
 				F49DA51425CD60A300FF936C /* MainListCell.swift in Sources */,
+				F49DECD225CE8B2200DB8621 /* MainNotiCell.swift in Sources */,
 				F42186F525CA57DC00212456 /* Config.swift in Sources */,
 				F42186E825CA571900212456 /* MainViewController.swift in Sources */,
 				F42186DF25CA571900212456 /* MainWorker.swift in Sources */,
+				F49DECC825CE539000DB8621 /* DateFormatter+Extension.swift in Sources */,
 				F42186EB25CA571900212456 /* MainInteractor.swift in Sources */,
 				F42186DC25CA571900212456 /* MainPresenter.swift in Sources */,
 				F49DA51B25CD674600FF936C /* CALayer+Extension.swift in Sources */,

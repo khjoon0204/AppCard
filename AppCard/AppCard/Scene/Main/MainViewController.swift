@@ -14,7 +14,7 @@ import UIKit
 
 protocol MainDisplayLogic: class
 {
-//    func displaySomething(viewModel: Main.Something.ViewModel)
+    func displayGetList(viewModel: Main.GetList.ViewModel)
 }
 
 class MainViewController: UIViewController, MainDisplayLogic
@@ -78,12 +78,21 @@ class MainViewController: UIViewController, MainDisplayLogic
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
         setupSwipeView()
+        tableView.delegate = self
+        tableView.dataSource = self
         interactor?.getList()
-        
     }
     
+    func displayGetList(viewModel: Main.GetList.ViewModel)
+    {
+        tableView.reloadData()
+    }
+    
+}
+
+// MARK: Swipe
+extension MainViewController{
     func setupSwipeView(){
         swipeView.layer.applySketchShadow(color: .black, alpha: 0.1, x: 0, y: -30, blur: 30, spread: 0)
         let swipe = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
@@ -96,7 +105,6 @@ class MainViewController: UIViewController, MainDisplayLogic
         moveToEdge(recognizer)
     }
     
-    // MARK: Swipe
     private func moveToEdge(_ recognizer: UIPanGestureRecognizer){
         guard recognizer.state == .ended else {return}
         let toTop = swipeView.frame.origin.y < (view.frame.height)/2
@@ -131,41 +139,32 @@ class MainViewController: UIViewController, MainDisplayLogic
         guard moveY >= SWIPE_TOP_LIMIT else {return}
         swipeView.frame.origin.y = moveY
     }
-    
-    // MARK: Do something
-    
-    //@IBOutlet weak var nameTextField: UITextField!
-    
-//    func doSomething()
-//    {
-//        let request = Main.Something.Request()
-//        interactor?.doSomething(request: request)
-//    }
-    
-//    func displaySomething(viewModel: Main.Something.ViewModel)
-//    {
-//        //nameTextField.text = viewModel.name
-//    }
 }
 
-//// MARK: - UITableView
-//extension MainViewController: UITableViewDelegate, UITableViewDataSource{
-//
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return interactor?.getList()
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        guard let cityGroup = cityGroup else {return UITableViewCell()}
-//        return FITAllCitiesCountryCell.config(delegateTargetTo: self, tableView, cellForItemAt: indexPath, dataSource: cityGroup)
-//    }
-//    
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        print(indexPath)
-//    }
-//
+// MARK: - TableView
+extension MainViewController: UITableViewDelegate, UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return interactor?._list()?.count ?? 0
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let inter = interactor, let list = inter._list(), let displayType = list.object(indexOf: indexPath.row)?.displayType else { return UITableViewCell() }
+        switch displayType{
+        case .displayTypeDefault:
+            return MainListCell.config(delegateTargetTo: self, tableView, cellForItemAt: indexPath, dataSource: list)
+        case .noBack:
+            return MainNoBackCell.config(delegateTargetTo: self, tableView, cellForItemAt: indexPath, dataSource: list)
+        case .none:
+            return MainNotiCell()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath)
+    }
+
 //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 //        return UITableView.automaticDimension
 //    }
-//
-//}
+
+}
