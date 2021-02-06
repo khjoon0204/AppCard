@@ -14,18 +14,22 @@ import UIKit
 
 class MainWorker
 {
-    func list(completion: ((Main.List?) -> Void)?){
-        FBDatabase.list { (objs) in
-            if let objs = objs, case let list = Main.List(objs: objs), list.list.count > 0{
-                completion?(list)
-            }
-            else{ print("아이템 갯수=0"); completion?(nil) }
-        }
-    }
+//    func list(completion: ((Main.List?) -> Void)?){
+//        FBDatabase.list { (objs) in
+//            if let objs = objs, case let list = Main.List(objs: objs), list.list.count > 0{
+//                completion?(list)
+//            }
+//            else{ print("아이템 갯수=0"); completion?(nil) }
+//        }
+//    }
     
-    func listPagination(startingAt key: String, completion: ((Main.List?) -> Void)?){
+    func listPagination(startingAt key: String, completion: ((Main.List?) -> Void)?, imageDownloaded:((Main.List?)->Void)?){
         FBDatabase.listPagination(startingAt: key) { (objs) in
-            if let objs = objs, case let list = Main.List(objs: objs), list.list.count > 0{
+            if let objs = objs{ // list.list.count > 0
+                let list = Main.List(imageDownloadCompletion: { list in
+                    print("imageDownloadCompletion!")
+                    imageDownloaded?(list)
+                }, objs: objs)
                 completion?(list)
             }
             else{ print("아이템 갯수=0"); completion?(nil) }

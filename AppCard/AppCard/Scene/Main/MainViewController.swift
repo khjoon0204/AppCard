@@ -30,6 +30,7 @@ class MainViewController: UIViewController, MainDisplayLogic
     var interactor: MainBusinessLogic?
     var router: (NSObjectProtocol & MainRoutingLogic & MainDataPassing)?
     lazy var prePosition: CGFloat = swipeView.frame.origin.y
+    private(set) var list = Main.List(list: [])
     
     // MARK: Object lifecycle
     
@@ -84,9 +85,15 @@ class MainViewController: UIViewController, MainDisplayLogic
         interactor?.getList()
     }
     
+    // MARK: Display
     func displayGetList(viewModel: Main.GetList.ViewModel)
     {
+        self.list = viewModel.list
         tableView.reloadData()
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        print(scrollView.contentOffset)
     }
     
 }
@@ -144,18 +151,18 @@ extension MainViewController{
 // MARK: - TableView
 extension MainViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return interactor?._list()?.count ?? 0
+        return list.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let inter = interactor, let list = inter._list(), let displayType = list.object(indexOf: indexPath.row)?.displayType else { return UITableViewCell() }
+        guard let displayType = list.object(indexOf: indexPath.row)?.displayType else { return UITableViewCell() }
         switch displayType{
         case .displayTypeDefault:
             return MainListCell.config(delegateTargetTo: self, tableView, cellForItemAt: indexPath, dataSource: list)
         case .noBack:
             return MainNoBackCell.config(delegateTargetTo: self, tableView, cellForItemAt: indexPath, dataSource: list)
         case .none:
-            return MainNotiCell()
+            return MainNotiCell.config(delegateTargetTo: self, tableView, cellForItemAt: indexPath, dataSource: list)
         }
     }
     
@@ -166,5 +173,14 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
 //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 //        return UITableView.automaticDimension
 //    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        guard let sizeString = list.object(indexOf: indexPath.row)?.display?.size,
+              case let sizeArray = sizeString.split(separator: "x"),
+//              let width = NumberFormatter().number(from: String(sizeArray[0])),
+              let height = NumberFormatter().number(from: String(sizeArray[1]))
+        else { return UITableView.automaticDimension }
+        return CGFloat(truncating: height)
+    }
 
 }

@@ -25,7 +25,10 @@ class MainPresenter: MainPresentationLogic
     
     func presentGetList(response: Main.GetList.Response)
     {
-        let viewModel = Main.GetList.ViewModel(list: response.list)
+        let notiEle = Main.List.ListElement(category: .noti, displayType: Main.List.DisplayType.none)
+        var list = response.list
+        list.insertOnce(element: notiEle, at: 0)
+        let viewModel = Main.GetList.ViewModel(list: list)
         viewController?.displayGetList(viewModel: viewModel)
     }
     

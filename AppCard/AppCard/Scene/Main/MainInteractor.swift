@@ -38,10 +38,13 @@ class MainInteractor: MainBusinessLogic, MainDataStore
             if let list = list{
                 self.list.append(contensOf: list)
                 print(list.list.count)
-                let response = Main.GetList.Response(list: list)
-                self.presenter?.presentGetList(response: response)
+//                let response = Main.GetList.Response(list: list)
+//                self.presenter?.presentGetList(response: response)
             }
             else{ /* failure */ }
+        } imageDownloaded: { list in
+            let response = Main.GetList.Response(list: list!)
+            self.presenter?.presentGetList(response: response)
         }
     }
     

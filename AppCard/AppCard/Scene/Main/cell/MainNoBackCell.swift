@@ -44,14 +44,9 @@ class MainNoBackCell: UITableViewCell {
         }
         else{ cell.subTitleHeight0.priority = cell.HEIGHT0_ANCHOR_CONNECT }
         
-        if let val = d.rightImg{
+        if let val = d.rightImgData{
             cell.rightImgWidth0.priority = cell.HEIGHT0_ANCHOR_BREAK
-            FBStorage.image(fileName: val, getData: { (image) in
-                if let img = image{
-                    cell.rightImg.image = img
-                }
-                else{ cell.rightImgWidth0.priority = cell.HEIGHT0_ANCHOR_CONNECT }
-            })
+            cell.rightImg.image = UIImage(data: val)
         }
         else{ cell.rightImgWidth0.priority = cell.HEIGHT0_ANCHOR_CONNECT }
         

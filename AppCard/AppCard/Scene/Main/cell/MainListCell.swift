@@ -75,33 +75,19 @@ class MainListCell: UITableViewCell {
         }
         else{ cell.labelTextHeight0.priority = cell.HEIGHT0_ANCHOR_CONNECT }
         
-        if let val = d.backImg{
-            FBStorage.image(fileName: val, getData: { (image) in
-                if let img = image{
-                    cell.backImg.image = img
-                }
-            })
+        if cell.backImg.image == nil, let val = d.backImgData{
+            cell.backImg.image = UIImage(data: val)
         }
         
-        if let val = d.labelImg{
+        if let val = d.labelImgData{
             cell.labelImgHeight0.priority = cell.HEIGHT0_ANCHOR_BREAK
-            FBStorage.image(fileName: val, getData: { (image) in
-                if let img = image{
-                    cell.labelImg.image = img
-                }
-                else{ cell.labelImgHeight0.priority = cell.HEIGHT0_ANCHOR_CONNECT }
-            })
+            cell.labelImg.image = UIImage(data: val)
         }
         else{ cell.labelImgHeight0.priority = cell.HEIGHT0_ANCHOR_CONNECT }
         
-        if let val = d.centerImg{
+        if let val = d.centerImgData{
             cell.centerImgHeight0.priority = cell.HEIGHT0_ANCHOR_BREAK
-            FBStorage.image(fileName: val, getData: { (image) in
-                if let img = image{
-                    cell.centerImg.image = img
-                }
-                else{ cell.centerImgHeight0.priority = cell.HEIGHT0_ANCHOR_CONNECT }
-            })
+            cell.centerImg.image = UIImage(data: val)
         }
         else{ cell.centerImgHeight0.priority = cell.HEIGHT0_ANCHOR_CONNECT }
         
@@ -111,7 +97,7 @@ class MainListCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        backView.layer.applySketchShadow(color: .black, alpha: 0.1, x: 10, y: 10, blur: 8, spread: 0)
+        backView.layer.applySketchShadow(color: .black, alpha: 0.1, x: 10, y: 20, blur: 20, spread: 0)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
