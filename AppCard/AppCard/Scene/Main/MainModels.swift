@@ -73,41 +73,21 @@ extension Main{
             case none = "none"
         }
         
-//        internal convenience init(list: [Main.List.ListElement] = [], imageDownloadCompletion: ((Main.List?) -> Void)? = nil, objs: [String:AnyObject] = [:]) {
-//            self.init()
-//            self.imageDownloadCompletion = imageDownloadCompletion
-//            var eles: [Main.List.ListElement] = objs.map {  listElement(object: $0) }
-//            var index = 0
-//            eles = eles.filter({ //(<#ListElement#>) -> Bool in
-//                if $0.displayType == nil{
-//                    return false
-//                }
-//                else{
-//                    setImageData(ele: $0, idx: index)
-//                    index += 1
-//                    return true
-//                }
-//            })
-//            self.list = eles
-//        }
-        
         internal convenience init(list: [Main.List.ListElement] = [], imageDownloadCompletion: ((Main.List?) -> Void)? = nil, objs: [DataSnapshot] = []) {
             self.init()
             self.imageDownloadCompletion = imageDownloadCompletion
-            var eles: [Main.List.ListElement] = objs.map {
-                listElement(object: (key: $0.key as String, value: $0.value as AnyObject))
+            var eles: [Main.List.ListElement] = []
+            var eleSet = Set<String>() // 중복제거용
+            for i in 0..<objs.count{
+                let obj = objs[i]
+                let ele = listElement(object: (key: obj.key as String, value: obj.value as AnyObject))
+                if ele.displayType == nil{continue}
+                let oldCnt = eleSet.count
+                eleSet.insert(obj.key)
+                if eleSet.count == oldCnt{continue}
+                eles.append(ele)
+                setImageData(ele: ele, idx: eles.count-1)
             }
-            var index = 0
-            eles = eles.filter({ //(<#ListElement#>) -> Bool in
-                if $0.displayType == nil{
-                    return false
-                }
-                else{
-                    setImageData(ele: $0, idx: index)
-                    index += 1
-                    return true
-                }
-            })
             self.list = eles
         }
         

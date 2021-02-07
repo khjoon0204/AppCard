@@ -30,9 +30,7 @@ class MainInteractor: MainBusinessLogic, MainDataStore
     var worker = MainWorker()
     //var name: String = ""
     private(set) var list = Main.List(list: [])
-    private(set) var lastKey: String = Main.GetList.FIRST_KEY
-//    private(set) var curPage: Int = 0
-    
+    private(set) var lastKey: String = Main.GetList.FIRST_KEY    
     
     func getList()
     {

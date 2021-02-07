@@ -32,13 +32,13 @@ class MainNoBackCell: UITableViewCell {
               let d: Main.List.Display = ele.display
         else {return UITableViewCell()}
         
-        if let val = d.title{
+        if let val = d.title, val.count > 0{
             cell.titleHeight0.priority = cell.HEIGHT0_ANCHOR_BREAK
             cell.title.text = val
         }
         else{ cell.titleHeight0.priority = cell.HEIGHT0_ANCHOR_CONNECT }
         
-        if let val = d.subTitle{
+        if let val = d.subTitle, val.count > 0{
             cell.subTitleHeight0.priority = cell.HEIGHT0_ANCHOR_BREAK
             cell.subTitle.setTitle(val, for: .normal)
         }

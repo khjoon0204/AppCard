@@ -43,25 +43,25 @@ class MainListCell: UITableViewCell {
         else {return UITableViewCell()}
         
         // property set
-        if let val = d.headerTitle{
+        if let val = d.headerTitle, val.count > 0{
             cell.headerTitleHeight0.priority = cell.HEIGHT0_ANCHOR_BREAK
             cell.headerTitle.setTitle(val, for: .normal)
         }
         else{ cell.headerTitleHeight0.priority = cell.HEIGHT0_ANCHOR_CONNECT }
         
-        if let val = d.mainTitle{
+        if let val = d.mainTitle, val.count > 0{
             cell.mainTitleHeight0.priority = cell.HEIGHT0_ANCHOR_BREAK
             cell.mainTitle.text = val
         }
         else{ cell.mainTitleHeight0.priority = cell.HEIGHT0_ANCHOR_CONNECT }
         
-        if let val = d.subTitle{
+        if let val = d.subTitle, val.count > 0{
             cell.subTitleHeight0.priority = cell.HEIGHT0_ANCHOR_BREAK
             cell.subTitle.text = val
         }
         else{ cell.subTitleHeight0.priority = cell.HEIGHT0_ANCHOR_CONNECT }
         
-        if let val = ele.dDayDate,
+        if let val = ele.dDayDate, val.count > 0,
            let dateDDay = cell.f.date(from: val),
            case let days = Calendar.current.dateComponents([.day], from: Date(), to: dateDDay)
         {
@@ -70,14 +70,19 @@ class MainListCell: UITableViewCell {
         }
         else{ cell.dDayHeight0.priority = cell.HEIGHT0_ANCHOR_CONNECT }
         
-        if let val = d.labelText{
+        if let val = d.labelText, val.count > 0{
             cell.labelTextHeight0.priority = cell.HEIGHT0_ANCHOR_BREAK
             cell.labelText.setTitle(val, for: .normal)
         }
-        else{ cell.labelTextHeight0.priority = cell.HEIGHT0_ANCHOR_CONNECT }
+        else{
+            cell.labelTextHeight0.priority = cell.HEIGHT0_ANCHOR_CONNECT
+        }
         
-        if cell.backImg.image == nil, let val = d.backImgData{
+        if let val = d.backImgData{
             cell.backImg.image = UIImage(data: val)
+        }
+        else{
+            cell.backImg.image = nil
         }
         
         if let val = d.labelImgData{
@@ -93,17 +98,24 @@ class MainListCell: UITableViewCell {
         else{ cell.centerImgHeight0.priority = cell.HEIGHT0_ANCHOR_CONNECT }
         
         // color
-        if let val = d.mainColor{
+        if let val = d.mainColor, val.count > 0{
             let color = UIColor(hex: val)
             cell.contentV.backgroundColor = color
         }
+        else{ cell.contentV.backgroundColor = .systemBackground }
         
-        if let val = d.fontColor{
+        if let val = d.fontColor, val.count > 0{
             let color = UIColor(hex: val)
-            cell.headerTitle.setTitleColor(color, for: .normal)
+            cell.headerTitle.setTitleColor(color.withAlphaComponent(0.9), for: .normal)
             cell.mainTitle.textColor = color
-            cell.subTitle.textColor = color
-            cell.labelText.setTitleColor(color, for: .normal)
+            cell.subTitle.textColor = color.withAlphaComponent(0.6)
+            cell.labelText.setTitleColor(color.withAlphaComponent(0.8), for: .normal)
+        }
+        else{
+            cell.headerTitle.setTitleColor(UIColor.black.withAlphaComponent(0.9), for: .normal)
+            cell.mainTitle.textColor = .black
+            cell.subTitle.textColor = UIColor.black.withAlphaComponent(0.6)
+            cell.labelText.setTitleColor(UIColor.black.withAlphaComponent(0.8), for: .normal)
         }
         
         return cell

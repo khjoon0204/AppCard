@@ -11,6 +11,7 @@
 //
 
 import UIKit
+import WebKit
 
 protocol MainDisplayLogic: class
 {
@@ -25,6 +26,7 @@ class MainViewController: UIViewController, MainDisplayLogic
     @IBOutlet weak var swipeViewBottom: NSLayoutConstraint!
     @IBOutlet weak var swipeViewHeight: NSLayoutConstraint!
     @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var webView: WKWebView!
     lazy var SWIPE_TOP_LIMIT: CGFloat = headerView.frame.height
     lazy var SWIPE_BOTTOM_LIMIT: CGFloat = view.frame.height - (swipeViewHeight.constant - swipeViewBottom.constant)
     var interactor: MainBusinessLogic?
@@ -82,9 +84,9 @@ class MainViewController: UIViewController, MainDisplayLogic
     {
         super.viewDidLoad()
         setupSwipeView()
+        webViewLoadUrl()
         tableView.delegate = self
         tableView.dataSource = self
-//        interactor?.getList(curPage: curPage, pageSize: PAGE_SIZE)
         interactor?.getList()
     }
     
@@ -115,6 +117,16 @@ extension MainViewController{
         interactor?.getList()
     }
     
+}
+
+// MARK: WebView
+extension MainViewController{
+    func webViewLoadUrl(){
+        let urlString:String = "https://www.hyundaicard.com"
+        let url = URL(string: urlString)!
+        let urlRequest = URLRequest(url: url)
+        webView.load(urlRequest)
+    }
 }
 
 // MARK: Swipe View
