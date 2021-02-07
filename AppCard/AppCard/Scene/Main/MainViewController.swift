@@ -18,7 +18,7 @@ protocol MainDisplayLogic: class
 }
 
 class MainViewController: UIViewController, MainDisplayLogic
-{
+{    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var dimView: UIView!
     @IBOutlet weak var swipeView: UIView!
@@ -31,6 +31,8 @@ class MainViewController: UIViewController, MainDisplayLogic
     var router: (NSObjectProtocol & MainRoutingLogic & MainDataPassing)?
     lazy var prePosition: CGFloat = swipeView.frame.origin.y
     private(set) var list = Main.List(list: [])
+    private var lastScrollY: CGFloat = 0    
+    private var getListDone = false
     
     // MARK: Object lifecycle
     
@@ -82,24 +84,54 @@ class MainViewController: UIViewController, MainDisplayLogic
         setupSwipeView()
         tableView.delegate = self
         tableView.dataSource = self
+//        interactor?.getList(curPage: curPage, pageSize: PAGE_SIZE)
         interactor?.getList()
     }
     
     // MARK: Display
     func displayGetList(viewModel: Main.GetList.ViewModel)
     {
+        getListDone = true
         self.list = viewModel.list
         tableView.reloadData()
     }
     
+    
+}
+
+// MARK: ScrollView
+extension MainViewController{
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        print(scrollView.contentOffset)
+        swipeView(scrollView)
+        nextPage()
+    }
+    
+    func nextPage(){
+        guard getListDone, let visibleRow = tableView.indexPathsForVisibleRows?.last?.row, visibleRow + Main.GetList.PAGE_SIZE > list.count else {return}
+        print("visibleRow=\(visibleRow) list.count=\(list.count)")
+        getListDone = false
+//        curPage += 1
+//        interactor?.getList(curPage: curPage, pageSize: PAGE_SIZE)        
+        interactor?.getList()
     }
     
 }
 
-// MARK: Swipe
+// MARK: Swipe View
 extension MainViewController{
+    func swipeView(_ scrollView: UIScrollView){
+        guard case let y = scrollView.contentOffset.y,
+              y > 0,
+              y < (scrollView.contentSize.height - scrollView.frame.height)
+        else {return}
+        let up = (lastScrollY >= y)
+        lastScrollY = y
+        UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseInOut]) {
+            self.swipeView.frame.origin.y = up ? self.SWIPE_BOTTOM_LIMIT : self.view.frame.height
+        } completion: { (success) in
+        }
+    }
+    
     func setupSwipeView(){
         swipeView.layer.applySketchShadow(color: .black, alpha: 0.1, x: 0, y: -30, blur: 30, spread: 0)
         let swipe = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
@@ -170,10 +202,6 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
         print(indexPath)
     }
 
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return UITableView.automaticDimension
-//    }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         guard let sizeString = list.object(indexOf: indexPath.row)?.display?.size,
               case let sizeArray = sizeString.split(separator: "x"),

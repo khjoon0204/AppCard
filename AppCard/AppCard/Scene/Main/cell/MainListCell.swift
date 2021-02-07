@@ -42,6 +42,7 @@ class MainListCell: UITableViewCell {
               let d: Main.List.Display = ele.display
         else {return UITableViewCell()}
         
+        // property set
         if let val = d.headerTitle{
             cell.headerTitleHeight0.priority = cell.HEIGHT0_ANCHOR_BREAK
             cell.headerTitle.setTitle(val, for: .normal)
@@ -65,7 +66,7 @@ class MainListCell: UITableViewCell {
            case let days = Calendar.current.dateComponents([.day], from: Date(), to: dateDDay)
         {
             cell.dDayHeight0.priority = cell.HEIGHT0_ANCHOR_BREAK
-            cell.dDayLabel.text = "D - \(days)"
+            cell.dDayLabel.text = "D - \(days.day ?? 0)"
         }
         else{ cell.dDayHeight0.priority = cell.HEIGHT0_ANCHOR_CONNECT }
         
@@ -90,6 +91,20 @@ class MainListCell: UITableViewCell {
             cell.centerImg.image = UIImage(data: val)
         }
         else{ cell.centerImgHeight0.priority = cell.HEIGHT0_ANCHOR_CONNECT }
+        
+        // color
+        if let val = d.mainColor{
+            let color = UIColor(hex: val)
+            cell.contentV.backgroundColor = color
+        }
+        
+        if let val = d.fontColor{
+            let color = UIColor(hex: val)
+            cell.headerTitle.setTitleColor(color, for: .normal)
+            cell.mainTitle.textColor = color
+            cell.subTitle.textColor = color
+            cell.labelText.setTitleColor(color, for: .normal)
+        }
         
         return cell
     }

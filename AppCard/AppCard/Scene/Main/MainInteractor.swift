@@ -14,8 +14,8 @@ import UIKit
 
 protocol MainBusinessLogic
 {
+//    func getList(curPage: Int, pageSize: Int)
     func getList()
-    func nextPage()
     func _list() -> Main.List?
 }
 
@@ -30,29 +30,36 @@ class MainInteractor: MainBusinessLogic, MainDataStore
     var worker = MainWorker()
     //var name: String = ""
     private(set) var list = Main.List(list: [])
-    private(set) var curPage: Int = 0
+    private(set) var lastKey: String = Main.GetList.FIRST_KEY
+//    private(set) var curPage: Int = 0
+    
     
     func getList()
     {
-        worker.listPagination(startingAt: String(curPage * 10)) { (list) in
+        worker.listPagination(startingAt: lastKey, size: Main.GetList.PAGE_SIZE) { (list) in
             if let list = list{
                 self.list.append(contensOf: list)
-                print(list.list.count)
-//                let response = Main.GetList.Response(list: list)
-//                self.presenter?.presentGetList(response: response)
+                print(self.list.list.count)
+                let response = Main.GetList.Response(list: self.list)
+                self.presenter?.presentGetList(response: response)
+                self.lastKey = self.list.object(indexOf: self.list.count-1)?.key ?? ""
             }
-            else{ /* failure */ }
-        } imageDownloaded: { list in
-            let response = Main.GetList.Response(list: list!)
-            self.presenter?.presentGetList(response: response)
+            else{ /* failure */ }            
         }
     }
     
-    func nextPage()
-    {
-        curPage += 1
-        getList()
-    }
+//    func getList()
+//    {
+//        worker.listPagination(startingAt: updateDate, size: Main.GetList.PAGE_SIZE) { (list) in
+//            if let list = list{
+//                self.list.append(contensOf: list)
+//                print(self.list.list.count)
+//                self.updateDate = self.list.object(indexOf: self.list.count-1)?.updateDate ?? ""
+//                let response = Main.GetList.Response(list: self.list)
+//                self.presenter?.presentGetList(response: response)
+//            }
+//        }
+//    }
     
     // MARK: Getter
     func _list() -> Main.List?

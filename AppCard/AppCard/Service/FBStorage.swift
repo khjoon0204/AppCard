@@ -34,7 +34,7 @@ class FBStorage{
         // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
         islandRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
           if let error = error {
-            print("이미지 가져오기 실패 error=\(error)")
+            print("이미지 가져오기 실패 fileName=\(fileName) error=\(error)")
             getData?(nil)
           } else {
 //            print("fileName=\(fileName) data=\(data!.count)")

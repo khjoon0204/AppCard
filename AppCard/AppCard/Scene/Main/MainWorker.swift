@@ -23,14 +23,13 @@ class MainWorker
 //        }
 //    }
     
-    func listPagination(startingAt key: String, completion: ((Main.List?) -> Void)?, imageDownloaded:((Main.List?)->Void)?){
-        FBDatabase.listPagination(startingAt: key) { (objs) in
+    func listPagination(startingAt key: String, size: Int, completion: ((Main.List?) -> Void)?){
+        FBDatabase.listPagination(startingAt: key, size: UInt(size)) { (objs) in
             if let objs = objs{ // list.list.count > 0
-                let list = Main.List(imageDownloadCompletion: { list in
+                Main.List(imageDownloadCompletion: { list in
                     print("imageDownloadCompletion!")
-                    imageDownloaded?(list)
+                    completion?(list)
                 }, objs: objs)
-                completion?(list)
             }
             else{ print("아이템 갯수=0"); completion?(nil) }
         }

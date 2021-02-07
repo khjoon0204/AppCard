@@ -11,6 +11,7 @@
 //
 
 import UIKit
+import Firebase
 
 enum Main
 {
@@ -19,6 +20,8 @@ enum Main
     
     enum GetList
     {
+        static let FIRST_KEY: String = "id_00000000000000"
+        static let PAGE_SIZE: Int = 10
         struct Response
         {
             var list: List
@@ -42,7 +45,7 @@ extension Main{
         struct ListElement {
             var category : CategoryType?
             var displayType: DisplayType?
-            var updateDate, openDate, closeDate, expireDate, dDayDate, corpName: String?
+            var key, updateDate, openDate, closeDate, expireDate, dDayDate, corpName: String?
             var display: Display?
         }
         
@@ -70,83 +73,128 @@ extension Main{
             case none = "none"
         }
         
-        internal convenience init(list: [Main.List.ListElement] = [], imageDownloadCompletion: ((Main.List?) -> Void)? = nil, objs: [AnyObject] = []) {
+//        internal convenience init(list: [Main.List.ListElement] = [], imageDownloadCompletion: ((Main.List?) -> Void)? = nil, objs: [String:AnyObject] = [:]) {
+//            self.init()
+//            self.imageDownloadCompletion = imageDownloadCompletion
+//            var eles: [Main.List.ListElement] = objs.map {  listElement(object: $0) }
+//            var index = 0
+//            eles = eles.filter({ //(<#ListElement#>) -> Bool in
+//                if $0.displayType == nil{
+//                    return false
+//                }
+//                else{
+//                    setImageData(ele: $0, idx: index)
+//                    index += 1
+//                    return true
+//                }
+//            })
+//            self.list = eles
+//        }
+        
+        internal convenience init(list: [Main.List.ListElement] = [], imageDownloadCompletion: ((Main.List?) -> Void)? = nil, objs: [DataSnapshot] = []) {
             self.init()
             self.imageDownloadCompletion = imageDownloadCompletion
-            var eles: [ListElement] = []
-            for idx in 0..<objs.count{
-                let i = objs[idx]
-                var ele = ListElement()
-                if let val = i["category"] as? String{ ele.category = CategoryType(rawValue: val) }
-                if let val = i["displayType"] as? String{ ele.displayType = DisplayType(rawValue: val) }
-                if let val = i["updateDate"] as? String{ ele.updateDate = val }
-                if let val = i["openDate"] as? String{ ele.openDate = val }
-                if let val = i["closeDate"] as? String{ ele.closeDate = val }
-                if let val = i["expireDate"] as? String{ ele.expireDate = val }
-                if let val = i["dDayDate"] as? String{ ele.dDayDate = val }
-                if let val = i["corpName"] as? String{ ele.corpName = val }
-                if let d = i["display"] as? [String:AnyObject]{
-                    ele.display = Display()
-                    if let val = d["headerTitle"] as? String{ ele.display?.headerTitle = val }
-                    if let val = d["mainTitle"] as? String{ ele.display?.mainTitle = val }
-                    if let val = d["subTitle"] as? String{ ele.display?.subTitle = val }
-                    if let val = d["mainColor"] as? String{ ele.display?.mainColor = val }
-                    if let val = d["fontColor"] as? String{ ele.display?.fontColor = val }
-                    if let val = d["labelText"] as? String{ ele.display?.labelText = val }
-                    if let val = d["size"] as? String{ ele.display?.size = val }
-                    if let val = d["title"] as? String{ ele.display?.title = val }
-                    if let val = d["iconImg"] as? String{
-                        ele.display?.iconImg = val
-                        FBStorage.imageData(fileName: val, getData: {
-                            ele.display?.iconImgData = $0
-                        })
-                    }
-                    if let val = d["backImg"] as? String{
-                        ele.display?.backImg = val
-                        FBStorage.imageData(fileName: val, getData: { data in
-                            self.update(indexOf: idx) { (obj) in
-                                obj.display?.backImgData = data
-                            }
-//                            print("idx=\(idx) backImgData Set! fileName=\(val) getData=\(data) setData=\(ele.display?.rightImgData?.count)")
-                            self.imageDownloadCompleteCancelingPrevious()
-                        })
-                    }
-                    if let val = d["labelImg"] as? String{
-                        ele.display?.labelImg = val
-                        FBStorage.imageData(fileName: val, getData: { data in
-                            self.update(indexOf: idx) { (obj) in
-                                obj.display?.labelImgData = data
-                            }
-//                            print("idx=\(idx) labelImgData Set! fileName=\(val) getData=\(data) setData=\(ele.display?.rightImgData?.count)")
-                            self.imageDownloadCompleteCancelingPrevious()
-                        })
-                    }
-                    if let val = d["centerImg"] as? String{
-                        ele.display?.centerImg = val
-                        FBStorage.imageData(fileName: val, getData: { data in
-                            self.update(indexOf: idx) { (obj) in
-                                obj.display?.centerImgData = data
-                            }
-//                            print("idx=\(idx) centerImgData Set! fileName=\(val) getData=\(data) setData=\(ele.display?.rightImgData?.count)")
-                            self.imageDownloadCompleteCancelingPrevious()
-                        })
-                    }
-                    if let val = d["rightImg"] as? String{
-                        ele.display?.rightImg = val
-                        FBStorage.imageData(fileName: val, getData: { data in                            
-                            self.update(indexOf: idx) { (obj) in
-                                obj.display?.rightImgData = data
-                            }
-//                            print("idx=\(idx) rightImgData Set! fileName=\(val) getData=\(data) setData=\(ele.display?.rightImgData?.count)")
-                            self.imageDownloadCompleteCancelingPrevious()
-                        })
-                    }
-                }
-                if ele.displayType == nil{continue}
-                eles.append(ele)
+            var eles: [Main.List.ListElement] = objs.map {
+                listElement(object: (key: $0.key as String, value: $0.value as AnyObject))
             }
+            var index = 0
+            eles = eles.filter({ //(<#ListElement#>) -> Bool in
+                if $0.displayType == nil{
+                    return false
+                }
+                else{
+                    setImageData(ele: $0, idx: index)
+                    index += 1
+                    return true
+                }
+            })
             self.list = eles
         }
+        
+        /// <#Description#>
+        /// - Parameters:
+        ///   - i: <#i description#>
+        ///   - idx: self.list index
+        /// - Returns: <#description#>
+        private func listElement(object obj: (Dictionary<String, AnyObject>.Element)) -> ListElement{
+            var ele = ListElement(key: obj.key)
+            let i = obj.value
+            if let val = i["category"] as? String{ ele.category = CategoryType(rawValue: val) }
+            if let val = i["displayType"] as? String{ ele.displayType = DisplayType(rawValue: val) }
+            if let val = i["updateDate"] as? String{ ele.updateDate = val }
+            if let val = i["openDate"] as? String{ ele.openDate = val }
+            if let val = i["closeDate"] as? String{ ele.closeDate = val }
+            if let val = i["expireDate"] as? String{ ele.expireDate = val }
+            if let val = i["dDayDate"] as? String{ ele.dDayDate = val }
+            if let val = i["corpName"] as? String{ ele.corpName = val }
+            if let d = i["display"] as? [String:AnyObject]{
+                ele.display = Display()
+                if let val = d["headerTitle"] as? String{ ele.display?.headerTitle = val }
+                if let val = d["mainTitle"] as? String{ ele.display?.mainTitle = val }
+                if let val = d["subTitle"] as? String{ ele.display?.subTitle = val }
+                if let val = d["mainColor"] as? String{ ele.display?.mainColor = val }
+                if let val = d["fontColor"] as? String{ ele.display?.fontColor = val }
+                if let val = d["labelText"] as? String{ ele.display?.labelText = val }
+                if let val = d["size"] as? String{ ele.display?.size = val }
+                if let val = d["title"] as? String{ ele.display?.title = val }
+                if let val = d["iconImg"] as? String{ele.display?.iconImg = val}
+                if let val = d["backImg"] as? String{ele.display?.backImg = val}
+                if let val = d["labelImg"] as? String{ele.display?.labelImg = val}
+                if let val = d["centerImg"] as? String{ele.display?.centerImg = val}
+                if let val = d["rightImg"] as? String{ele.display?.rightImg = val}
+            }
+            return ele
+        }
+        
+        private func setImageData(ele: ListElement, idx: Int){
+            guard let d = ele.display else {return}
+            if let val = d.iconImg, val.count > 0{
+                FBStorage.imageData(fileName: val, getData: { data in
+                    self.update(indexOf: idx) { (obj) in
+                        obj.display?.iconImgData = data
+                    }
+                    //                            print("idx=\(idx) backImgData Set! fileName=\(val) getData=\(data) setData=\(ele.display?.rightImgData?.count)")
+                    self.imageDownloadCompleteCancelingPrevious()
+                })
+            }
+            if let val = d.backImg, val.count > 0{
+                FBStorage.imageData(fileName: val, getData: { data in
+                    self.update(indexOf: idx) { (obj) in
+                        obj.display?.backImgData = data
+                    }
+                    //                            print("idx=\(idx) backImgData Set! fileName=\(val) getData=\(data) setData=\(ele.display?.rightImgData?.count)")
+                    self.imageDownloadCompleteCancelingPrevious()
+                })
+            }
+            if let val = d.labelImg, val.count > 0{
+                FBStorage.imageData(fileName: val, getData: { data in
+                    self.update(indexOf: idx) { (obj) in
+                        obj.display?.labelImgData = data
+                    }
+                    //                            print("idx=\(idx) labelImgData Set! fileName=\(val) getData=\(data) setData=\(ele.display?.rightImgData?.count)")
+                    self.imageDownloadCompleteCancelingPrevious()
+                })
+            }
+            if let val = d.centerImg, val.count > 0{
+                FBStorage.imageData(fileName: val, getData: { data in
+                    self.update(indexOf: idx) { (obj) in
+                        obj.display?.centerImgData = data
+                    }
+                    //                            print("idx=\(idx) centerImgData Set! fileName=\(val) getData=\(data) setData=\(ele.display?.rightImgData?.count)")
+                    self.imageDownloadCompleteCancelingPrevious()
+                })
+            }
+            if let val = d.rightImg, val.count > 0{
+                FBStorage.imageData(fileName: val, getData: { data in
+                    self.update(indexOf: idx) { (obj) in
+                        obj.display?.rightImgData = data
+                    }
+                    //                            print("idx=\(idx) rightImgData Set! fileName=\(val) getData=\(data) setData=\(ele.display?.rightImgData?.count)")
+                    self.imageDownloadCompleteCancelingPrevious()
+                })
+            }
+        }
+        
         
         private func imageDownloadCompleteCancelingPrevious(){
             NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(imageDownloadComplete), object: nil)
@@ -172,6 +220,7 @@ extension Main{
         }
         
         func update(indexOf idx: Int, block:((inout ListElement)->Void)){
+            guard idx < count else {return}
             block(&self.list[idx])
         }
         
