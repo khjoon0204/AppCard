@@ -46,7 +46,7 @@ class MainViewController: UIViewController, MainDisplayLogic
     var interactor: MainBusinessLogic?
     var router: (NSObjectProtocol & MainRoutingLogic & MainDataPassing)?
     lazy var prePosition: CGFloat = swipeView.frame.origin.y
-    private(set) var list = Main.List(list: [])
+    var list = Main.List(list: [])
     private var lastScrollY: CGFloat = 0    
     private var getListDone = false
 //    private var headerAlpha: CGFloat = 1
@@ -255,6 +255,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
 private extension UILabel{
     func layerAnimation(toColor to: UIColor, animationKey key: String) {
         let changeColor = CATransition()
+        changeColor.type = .fade
         changeColor.duration = 0.5
         CATransaction.begin()
         CATransaction.setCompletionBlock {

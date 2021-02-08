@@ -15,7 +15,6 @@ import Firebase
 
 enum Main
 {
-    
     // MARK: Use cases
     
     enum GetList
@@ -31,6 +30,39 @@ enum Main
             var list: List
         }
     }
+        
+    // MARK: - ListElement
+    struct ListElement: Codable {        
+        var category : CategoryType?
+        var displayType: DisplayType?
+        var key, updateDate, openDate, closeDate, expireDate, dDayDate, corpName: String?
+        var display: Display?
+        
+        // MARK: - Display
+        struct Display: Codable {
+            var headerTitle, mainTitle, subTitle, backImg: String?
+            var labelImg, centerImg: String?
+            var mainColor, fontColor: String?
+            var labelText, iconImg, size, title: String?
+            var rightImg: String?
+            var backImgData, labelImgData, centerImgData, iconImgData, rightImgData: Data?
+        }
+        
+        enum CategoryType: String, Codable {
+            case coupon = "coupon"
+            case feature = "feature"
+            case news = "news"
+            case noti = "noti"
+            case shop = "shop"
+        }
+                
+        enum DisplayType: String, Codable {
+            case displayTypeDefault = "default"
+            case noBack = "noBack"
+            case none = "none"
+        }
+    }
+    
 }
 
 extension Main{
@@ -40,42 +72,11 @@ extension Main{
             return self.list.count
         }
         var imageDownloadCompletion: ((Main.List?) -> Void)?
-        
-        // MARK: - ListElement
-        struct ListElement {
-            var category : CategoryType?
-            var displayType: DisplayType?
-            var key, updateDate, openDate, closeDate, expireDate, dDayDate, corpName: String?
-            var display: Display?
-        }
-        
-        // MARK: - Display
-        struct Display {
-            var headerTitle, mainTitle, subTitle, backImg: String?
-            var labelImg, centerImg: String?
-            var mainColor, fontColor: String?
-            var labelText, iconImg, size, title: String?
-            var rightImg: String?
-            var backImgData, labelImgData, centerImgData, iconImgData, rightImgData: Data?
-        }
-        
-        enum CategoryType: String {
-            case coupon = "coupon"
-            case feature = "feature"
-            case news = "news"
-            case noti = "noti"
-            case shop = "shop"
-        }
-                
-        enum DisplayType: String {
-            case displayTypeDefault = "default"
-            case noBack = "noBack"
-            case none = "none"
-        }
-        
-        internal convenience init(list: [Main.List.ListElement] = [], imageDownloadCompletion: ((Main.List?) -> Void)? = nil, objs: [DataSnapshot] = []) {
+         
+        internal convenience init(list: [Main.ListElement] = [], imageDownloadCompletion: ((Main.List?) -> Void)? = nil, objs: [DataSnapshot] = []) {
             self.init()
             self.imageDownloadCompletion = imageDownloadCompletion
+            self.list = list
             initWith(objs: objs)
 //            initWithHigherOrdering(objs: objs)
         }
@@ -83,12 +84,13 @@ extension Main{
         /// 고차함수용: O(2n)
         /// - Parameter objs: <#objs description#>
         func initWithHigherOrdering(objs: [DataSnapshot] = []){
+            guard objs.count > 0 else {return}
             var eleSet = Set<String>() // 중복제거용
             self.list = objs.map({ //(<#DataSnapshot#>) -> T in
                 listElement(object: (key: $0.key as String, value: $0.value as AnyObject))
             })
             var index = 0
-            self.list = self.list.filter({ //(<#ListElement#>) -> Bool in
+            self.list = self.list.filter({ //(<#Main.ListModel.ListElement#>) -> Bool in
                 if $0.displayType == nil{return false}
                 if let key = $0.key{
                     let oldCnt = eleSet.count
@@ -105,7 +107,8 @@ extension Main{
         /// 인덱스로 접근: O(n)
         /// - Parameter objs: <#objs description#>
         func initWith(objs: [DataSnapshot] = []){
-            var eles: [Main.List.ListElement] = []
+            guard objs.count > 0 else {return}
+            var eles: [Main.ListElement] = []
             var eleSet = Set<String>() // 중복제거용
             for i in 0..<objs.count{
                 let obj = objs[i]
@@ -124,13 +127,13 @@ extension Main{
         /// <#Description#>
         /// - Parameters:
         ///   - i: <#i description#>
-        ///   - idx: self.list index
+        ///   - idx: self.listModel.list index
         /// - Returns: <#description#>
-        private func listElement(object obj: (Dictionary<String, AnyObject>.Element)) -> ListElement{
-            var ele = ListElement(key: obj.key)
+        private func listElement(object obj: (Dictionary<String, AnyObject>.Element)) -> Main.ListElement{
+            var ele = Main.ListElement(key: obj.key)
             let i = obj.value
-            if let val = i["category"] as? String{ ele.category = CategoryType(rawValue: val) }
-            if let val = i["displayType"] as? String{ ele.displayType = DisplayType(rawValue: val) }
+            if let val = i["category"] as? String{ ele.category = Main.ListElement.CategoryType(rawValue: val) }
+            if let val = i["displayType"] as? String{ ele.displayType = Main.ListElement.DisplayType(rawValue: val) }
             if let val = i["updateDate"] as? String{ ele.updateDate = val }
             if let val = i["openDate"] as? String{ ele.openDate = val }
             if let val = i["closeDate"] as? String{ ele.closeDate = val }
@@ -138,7 +141,7 @@ extension Main{
             if let val = i["dDayDate"] as? String{ ele.dDayDate = val }
             if let val = i["corpName"] as? String{ ele.corpName = val }
             if let d = i["display"] as? [String:AnyObject]{
-                ele.display = Display()
+                ele.display = Main.ListElement.Display()
                 if let val = d["headerTitle"] as? String{ ele.display?.headerTitle = val }
                 if let val = d["mainTitle"] as? String{ ele.display?.mainTitle = val }
                 if let val = d["subTitle"] as? String{ ele.display?.subTitle = val }
@@ -156,7 +159,7 @@ extension Main{
             return ele
         }
         
-        private func setImageData(ele: ListElement, idx: Int){
+        private func setImageData(ele: Main.ListElement, idx: Int){
             guard let d = ele.display else {return}
             if let val = d.iconImg, val.count > 0{
                 FBStorage.imageData(fileName: val, getData: { data in
@@ -219,17 +222,17 @@ extension Main{
             self.list.append(contentsOf: list.list)
         }
                 
-        func insertOnce(element: Main.List.ListElement, at: Int){
+        func insertOnce(element: Main.ListElement, at: Int){
             guard let first = self.list.first, first.category! != .noti else {return}
             self.list.insert(element, at: at)
         }
         
-        func object(indexOf idx: Int) -> ListElement?{
+        func object(indexOf idx: Int) -> Main.ListElement?{
             guard idx < list.count else { print("index에 해당하는 element가 없습니다 index=\(idx)"); return nil }
             return self.list[idx]
         }
         
-        func update(indexOf idx: Int, block:((inout ListElement)->Void)){
+        func update(indexOf idx: Int, block:((inout Main.ListElement)->Void)){
             guard idx < count else {return}
             block(&self.list[idx])
         }

@@ -1,0 +1,740 @@
+{
+  "list" : {
+    "id_20210204130000" : {
+      "category" : "shop",
+      "closeDate" : "20210702000000",
+      "corpName" : "socar",
+      "display" : {
+        "backImg" : "bg_barcode.jpg",
+        "headerTitle" : "신상이에요",
+        "mainTitle" : "쏘카가 필요한 모든 순간\n쏘카 카드",
+        "size" : "400x300"
+      },
+      "displayType" : "default",
+      "openDate" : "20210101000001",
+      "updateDate" : "20210204130000"
+    },
+    "id_20210204130001" : {
+      "category" : "feature",
+      "closeDate" : "20210701000000",
+      "display" : {
+        "rightImg" : "linuxlogo.png",
+        "size" : "400x200",
+        "subTitle" : "현카TIME 더보기",
+        "title" : "처음 선보이는 연간명세서\n100% 활용법"
+      },
+      "displayType" : "noBack",
+      "openDate" : "20210101000002",
+      "updateDate" : "20210204130001"
+    },
+    "id_20210204130002" : {
+      "category" : "news",
+      "closeDate" : "20210703000000",
+      "display" : {
+        "backImg" : "bg_notebook.jpg",
+        "fontColor" : "#000000",
+        "headerTitle" : "뉴스룸",
+        "iconImg" : "ic_apple.png",
+        "labelText" : "현카TIME 더보기",
+        "mainColor" : "#ffffff",
+        "mainTitle" : "미니멀리즘의 옷을 벗은\n현대카드 MX BOOST 디자인",
+        "size" : "400x350"
+      },
+      "displayType" : "default",
+      "openDate" : "20210101000003",
+      "updateDate" : "20210204130002"
+    },
+    "id_20210204130003" : {
+      "category" : "coupon",
+      "closeDate" : "20210704000000",
+      "corpName" : "hyundai",
+      "display" : {
+        "backImg" : "bg_sofa.jpg",
+        "fontColor" : "#000000",
+        "headerTitle" : "",
+        "mainColor" : "#ffffff",
+        "mainTitle" : "3층 시스템 오픈\n'2층 구독'최대 30% 할인",
+        "size" : "400x300",
+        "subTitle" : "혜택 패키지 고르고\n추가 기프트도 확인하세요"
+      },
+      "displayType" : "default",
+      "openDate" : "20210101000004",
+      "updateDate" : "20210204130003"
+    },
+    "id_20210204130004" : {
+      "category" : "coupon",
+      "closeDate" : "20210705000000",
+      "corpName" : "emart",
+      "dDayDate" : "20210404000000",
+      "display" : {
+        "centerImg" : "linuxlogo.png",
+        "fontColor" : "#000000",
+        "headerTitle" : "이마트24",
+        "labelImg" : "pumba.png",
+        "mainColor" : "#ffffff",
+        "mainTitle" : "탄산/이온음료\n2,500원 즉시할인",
+        "size" : "400x450"
+      },
+      "displayType" : "default",
+      "openDate" : "20210101000005",
+      "updateDate" : "20210204130004"
+    },
+    "id_20210204130005" : {
+      "category" : "coupon",
+      "closeDate" : "20210707000000",
+      "corpName" : "hyundai",
+      "display" : {
+        "centerImg" : "daycare.png",
+        "fontColor" : "#000000",
+        "headerTitle" : "맞춤 혜택 추천, 3층 선물 도착!",
+        "mainColor" : "#ffffff",
+        "mainTitle" : "티몬\n최대 55% 할인+이벤트",
+        "size" : "400x350"
+      },
+      "displayType" : "default",
+      "openDate" : "20210101000006",
+      "updateDate" : "20210204130005"
+    },
+    "id_20210204130006" : {
+      "category" : "coupon",
+      "closeDate" : "20210708000000",
+      "corpName" : "hyundai",
+      "dDayDate" : "20210404000000",
+      "display" : {
+        "centerImg" : "werewolf.png",
+        "fontColor" : "#000000",
+        "headerTitle" : "맞춤 혜택 추천, 3층 선물 도착!",
+        "mainColor" : "#ffffff",
+        "mainTitle" : "닥터마틴\n10%할인쿠폰",
+        "size" : "400x400",
+        "subTitle" : "2021. 1. 27 ~ 2. 28"
+      },
+      "displayType" : "default",
+      "updateDate" : "20210204130006"
+    },
+    "id_20210204130007" : {
+      "category" : "coupon",
+      "closeDate" : "20210701000000",
+      "corpName" : "yogiyo",
+      "dDayDate" : "20210404000000",
+      "display" : {
+        "fontColor" : "#ffffff",
+        "headerTitle" : "요기요",
+        "labelImg" : "instagramcrack.png",
+        "mainColor" : "#373435",
+        "mainTitle" : "2,500 M포인트 사용",
+        "size" : "400x250"
+      },
+      "displayType" : "default",
+      "openDate" : "20210101000007",
+      "updateDate" : "20210204130007"
+    },
+    "id_20210204130008" : {
+      "category" : "shop",
+      "closeDate" : "20210709000000",
+      "corpName" : "dive",
+      "display" : {
+        "backImg" : "bg_fruit.jpg",
+        "headerTitle" : "지금 테크",
+        "labelImg" : "justmarried.png",
+        "mainTitle" : "추억의 레트로 게임",
+        "size" : "400x350"
+      },
+      "displayType" : "default",
+      "openDate" : "20210101000008",
+      "updateDate" : "20210204130008"
+    },
+    "id_20210204130009" : {
+      "category" : "coupon",
+      "closeDate" : "20210710000000",
+      "corpName" : "baemin",
+      "display" : {
+        "fontColor" : "#000000",
+        "headerTitle" : "배민현대카드 혜택",
+        "labelImg" : "pumba.png",
+        "mainColor" : "#ffffff",
+        "mainTitle" : "배민 4회 결제하고\n최대 34,400원 혜택받기",
+        "size" : "400x300",
+        "subTitle" : "2021. 1. 1 ~ 2. 28"
+      },
+      "displayType" : "default",
+      "openDate" : "20210101000009",
+      "updateDate" : "20210204130009"
+    },
+    "id_20210204130010" : {
+      "category" : "coupon",
+      "closeDate" : "20210711000000",
+      "corpName" : "hyundai",
+      "display" : {
+        "centerImg" : "ic_apple.png",
+        "fontColor" : "#000000",
+        "headerTitle" : "맞춤 혜택 추천, 3층 선물 도착!",
+        "mainColor" : "#ffffff",
+        "mainTitle" : "롯데인터넷면세점\n$15할인쿠폰",
+        "size" : "400x400",
+        "subTitle" : "2021. 1. 27 ~ 2. 28"
+      },
+      "displayType" : "default",
+      "expireDate" : "20210404000000",
+      "openDate" : "20210101000010",
+      "updateDate" : "20210204130010"
+    },
+    "id_20210204130011" : {
+      "category" : "coupon",
+      "closeDate" : "20210712000000",
+      "corpName" : "dunkin",
+      "display" : {
+        "fontColor" : "#000000",
+        "headerTitle" : "던킨도너츠",
+        "labelImg" : "raystudio.png",
+        "mainColor" : "#ffffff",
+        "mainTitle" : "50% M포인트 사용",
+        "size" : "400x250",
+        "subTitle" : "2021. 1. 27 ~ 6. 30"
+      },
+      "displayType" : "default",
+      "expireDate" : "20210630000000",
+      "openDate" : "20210101000011",
+      "updateDate" : "20210204130011"
+    },
+    "id_20210204130012" : {
+      "category" : "coupon",
+      "closeDate" : "20210713000000",
+      "corpName" : "hyundai",
+      "display" : {
+        "centerImg" : "twitter.png",
+        "fontColor" : "#ffffff",
+        "headerTitle" : "맞춤 혜택 추천, 3층 선물 도착!",
+        "mainColor" : "#00ACEE",
+        "mainTitle" : "GF프레시몰\n5천원 할인쿠폰",
+        "size" : "400x400",
+        "subTitle" : "2021. 1. 27 ~ 2. 28"
+      },
+      "displayType" : "default",
+      "expireDate" : "20210404000000",
+      "openDate" : "20210101000012",
+      "updateDate" : "20210204130012"
+    },
+    "id_20210204130013" : {
+      "category" : "coupon",
+      "closeDate" : "20210714000000",
+      "corpName" : "agoda",
+      "display" : {
+        "fontColor" : "#ffffff",
+        "headerTitle" : "아고다",
+        "labelImg" : "werewolf.png",
+        "mainColor" : "#000000",
+        "mainTitle" : "국내 숙소 예약 시\n10% 즉시할인",
+        "size" : "400x250",
+        "subTitle" : "2021. 2. 1 ~ 2. 28"
+      },
+      "displayType" : "default",
+      "openDate" : "20210101000013",
+      "updateDate" : "20210204130013"
+    },
+    "id_20210204130014" : {
+      "category" : "feature",
+      "closeDate" : "20210715000000",
+      "corpName" : "hyundai",
+      "dDayDate" : "20210304000000",
+      "display" : {
+        "backImg" : "bg_notebook.jpg",
+        "fontColor" : "#ffffff",
+        "headerTitle" : "2020 연간명세서",
+        "mainColor" : "#C1D1A9",
+        "mainTitle" : "명세서를 아직도\n한 장씩 확인하세요?",
+        "size" : "400x400",
+        "subTitle" : "이제는 앱에서\n한 번에 보여드려요"
+      },
+      "displayType" : "default",
+      "openDate" : "20210101000014",
+      "updateDate" : "20210204130014"
+    },
+    "id_20210204130015" : {
+      "category" : "shop",
+      "closeDate" : "20210716000000",
+      "corpName" : "dive",
+      "display" : {
+        "backImg" : "bg_2021.jpg",
+        "headerTitle" : "요즘 여행",
+        "labelImg" : "pumba.png",
+        "mainTitle" : "걷기 좋은\n전국의 둘레길 5",
+        "size" : "400x300"
+      },
+      "displayType" : "default",
+      "openDate" : "20210101000015",
+      "updateDate" : "20210204130015"
+    },
+    "id_20210204130016" : {
+      "category" : "coupon",
+      "closeDate" : "20210717000000",
+      "corpName" : "shakeshack",
+      "display" : {
+        "fontColor" : "#000000",
+        "headerTitle" : "쉐이크쉑",
+        "labelImg" : "mubarak.png",
+        "mainColor" : "#ffffff",
+        "mainTitle" : "1만 M포인트 사용",
+        "size" : "400x250"
+      },
+      "displayType" : "default",
+      "expireDate" : "20210404000000",
+      "openDate" : "20210101000016",
+      "updateDate" : "20210204130016"
+    },
+    "id_20210204130017" : {
+      "category" : "coupon",
+      "closeDate" : "20210718000000",
+      "corpName" : "emarteveryday",
+      "display" : {
+        "fontColor" : "#000000",
+        "headerTitle" : "이마트 에브리데이",
+        "labelImg" : "linuxlogo.png",
+        "mainColor" : "#ffffff",
+        "mainTitle" : "발렌타인 초콜릿 등\n행사 상품 최대 30%할인",
+        "size" : "400x250"
+      },
+      "displayType" : "default",
+      "expireDate" : "20210404000000",
+      "openDate" : "20210101000017",
+      "updateDate" : "20210204130017"
+    },
+    "id_20210204130018" : {
+      "category" : "coupon",
+      "closeDate" : "20210719000000",
+      "corpName" : "agoda",
+      "display" : {
+        "fontColor" : "#000000",
+        "headerTitle" : "VISA·아고다",
+        "labelImg" : "instagram.png",
+        "mainColor" : "#ffffff",
+        "mainTitle" : "국내 숙소 예약 시\n15% 즉시 할인",
+        "size" : "400x250",
+        "subTitle" : "2021. 2. 1 ~ 3. 31"
+      },
+      "displayType" : "default",
+      "expireDate" : "202103310000",
+      "openDate" : "20210101000018",
+      "updateDate" : "20210204130018"
+    },
+    "id_20210204130019" : {
+      "category" : "coupon",
+      "closeDate" : "20210720000000",
+      "corpName" : "hyundai",
+      "display" : {
+        "centerImg" : "picsart.png",
+        "fontColor" : "#ffffff",
+        "mainColor" : "#FB3694",
+        "mainTitle" : "3층 시스템 오픈\n맞춤형 혜택을 확인하세요!",
+        "size" : "400x400",
+        "subTitle" : "핵심 혜택 패키지 '구독'\n맞춤형 할인·쿠폰 '선물'"
+      },
+      "displayType" : "default",
+      "openDate" : "20210101000019",
+      "updateDate" : "20210204130019"
+    },
+    "id_20210204130020" : {
+      "category" : "feature",
+      "closeDate" : "20210721000000",
+      "corpName" : "hyundai",
+      "display" : {
+        "backImg" : "bg_graphup.jpg",
+        "size" : "400x200"
+      },
+      "displayType" : "default",
+      "openDate" : "20210101000020",
+      "updateDate" : "20210204130020"
+    },
+    "id_20210204130021" : {
+      "category" : "coupon",
+      "closeDate" : "20210722000000",
+      "corpName" : "starbucks",
+      "display" : {
+        "fontColor" : "#000000",
+        "headerTitle" : "스타벅스 현대카드",
+        "labelImg" : "chrome.png",
+        "mainColor" : "#ffffff",
+        "mainTitle" : "스타벅스에서 5만원 결제 시\n아메리카노 10잔 제공",
+        "size" : "400x250",
+        "subTitle" : "2021. 2. 1 ~ 3. 31"
+      },
+      "displayType" : "default",
+      "expireDate" : "202103310000",
+      "openDate" : "20210101000021",
+      "updateDate" : "20210204130021"
+    },
+    "id_20210204130022" : {
+      "category" : "coupon",
+      "closeDate" : "20210723000000",
+      "corpName" : "hyundai",
+      "display" : {
+        "fontColor" : "#000000",
+        "headerTitle" : "정부지원 소비쿠폰",
+        "labelImg" : "king.png",
+        "mainColor" : "#ffffff",
+        "mainTitle" : "외식 1만원 캐시백",
+        "size" : "400x250",
+        "subTitle" : "2020. 12. 29 ~ 3. 31"
+      },
+      "displayType" : "default",
+      "expireDate" : "202103310000",
+      "openDate" : "20210101000022",
+      "updateDate" : "20210204130022"
+    },
+    "id_20210204130023" : {
+      "category" : "news",
+      "closeDate" : "20210724000000",
+      "corpName" : "hyundai",
+      "display" : {
+        "centerImg" : "picsart.png",
+        "fontColor" : "#000000",
+        "headerTitle" : "뉴스룸",
+        "iconImg" : "ic_apple.png",
+        "labelText" : "현카TIME 더보기",
+        "mainColor" : "#07C7FD",
+        "mainTitle" : "미니멀리즘의 옷을 벗은\n현대카드 MX BOOST 디자인",
+        "size" : "400x300"
+      },
+      "displayType" : "default",
+      "openDate" : "20210101000023",
+      "updateDate" : "20210204130023"
+    },
+    "id_20210204130024" : {
+      "category" : "feature",
+      "closeDate" : "20210725000000",
+      "corpName" : "hyundai",
+      "display" : {
+        "fontColor" : "#ffffff",
+        "headerTitle" : "모든 가맹점 업종별",
+        "labelImg" : "twitter.png",
+        "mainColor" : "#00ACEE",
+        "mainTitle" : "최대 12개월 무이자할부",
+        "size" : "400x250",
+        "subTitle" : "2021. 1. 1 ~ 7. 31"
+      },
+      "displayType" : "default",
+      "expireDate" : "202103310000",
+      "openDate" : "20210101000024",
+      "updateDate" : "20210204130024"
+    },
+    "id_20210204130025" : {
+      "category" : "coupon",
+      "closeDate" : "20210726000000",
+      "corpName" : "junggwanjang",
+      "dDayDate" : "20210314000000",
+      "display" : {
+        "fontColor" : "#000000",
+        "headerTitle" : "정관장",
+        "labelImg" : "werewolf.png",
+        "mainColor" : "#ffffff",
+        "mainTitle" : "50% M포인트 사용",
+        "size" : "400x250"
+      },
+      "displayType" : "default",
+      "openDate" : "20210101000025",
+      "updateDate" : "20210204130025"
+    },
+    "id_20210204130026" : {
+      "category" : "feature",
+      "closeDate" : "20210727000000",
+      "corpName" : "hyundai",
+      "display" : {
+        "fontColor" : "#ffffff",
+        "headerTitle" : "대학교·대학원",
+        "labelImg" : "battleground.png",
+        "mainColor" : "#000000",
+        "mainTitle" : "등록금 납부 시\n최대 6개월 무이자 할부",
+        "size" : "400x250",
+        "subTitle" : "2021. 1. 1 ~ 7. 31"
+      },
+      "displayType" : "default",
+      "expireDate" : "202103310000",
+      "openDate" : "20210101000026",
+      "updateDate" : "20210204130026"
+    },
+    "id_20210204130027" : {
+      "category" : "shop",
+      "closeDate" : "20210728000000",
+      "corpName" : "dive",
+      "display" : {
+        "backImg" : "bg_fruit.jpg",
+        "headerTitle" : "요즘 맛집",
+        "labelImg" : "pumba.png",
+        "mainTitle" : "1인용 냄비 요리 맛집",
+        "size" : "400x250"
+      },
+      "displayType" : "default",
+      "openDate" : "20210101000027",
+      "updateDate" : "20210204130027"
+    },
+    "id_20210204130028" : {
+      "category" : "feature",
+      "closeDate" : "20210729000000",
+      "display" : {
+        "rightImg" : "king.png",
+        "size" : "400x200",
+        "subTitle" : "현카TIME 더보기",
+        "title" : "2021년 연말정산\n그것이 알고싶다"
+      },
+      "displayType" : "noBack",
+      "openDate" : "20210101000028",
+      "updateDate" : "20210204130028"
+    },
+    "id_20210204130029" : {
+      "category" : "feature",
+      "closeDate" : "20210801000000",
+      "display" : {
+        "rightImg" : "instagramcrack.png",
+        "size" : "400x200",
+        "subTitle" : "현카TIME 더보기",
+        "title" : "처음 선보이는 연간명세서\n100% 활용법"
+      },
+      "displayType" : "noBack",
+      "openDate" : "20210101000029",
+      "updateDate" : "20210204130029"
+    },
+    "id_20210204130030" : {
+      "category" : "feature",
+      "closeDate" : "20210802000050",
+      "corpName" : "hyundai",
+      "display" : {
+        "centerImg" : "picsart.png",
+        "fontColor" : "#ffffff",
+        "headerTitle" : "2020 연간 명세서",
+        "mainColor" : "#FC3795",
+        "mainTitle" : "지난해 카드를\n이렇게 많이 썼다고?",
+        "size" : "400x300"
+      },
+      "displayType" : "default",
+      "openDate" : "20210101000030",
+      "updateDate" : "20210204130030"
+    },
+    "id_20210204130031" : {
+      "category" : "coupon",
+      "closeDate" : "20210803000000",
+      "corpName" : "hyundai",
+      "display" : {
+        "centerImg" : "instagramcrack.png",
+        "fontColor" : "#000000",
+        "mainColor" : "#ffffff",
+        "mainTitle" : "3층 시스템 오픈\n'2층 구독' 최대 30% 할인",
+        "size" : "400x450",
+        "subTitle" : "혜택 패키지 고르고\n추가 기프트도 확인하세요"
+      },
+      "displayType" : "default",
+      "openDate" : "20210101000019",
+      "updateDate" : "20210204130031"
+    },
+    "id_20210204130032" : {
+      "category" : "feature",
+      "closeDate" : "20210804000000",
+      "display" : {
+        "rightImg" : "daycare.png",
+        "size" : "400x200",
+        "subTitle" : "현카TIME 더보기",
+        "title" : "챗봇 2.0\n아직도 전화로 상담하세요?"
+      },
+      "displayType" : "noBack",
+      "openDate" : "20210101000029",
+      "updateDate" : "20210204130032"
+    },
+    "id_20210204130033" : {
+      "category" : "news",
+      "closeDate" : "20210805000000",
+      "corpName" : "hyundai",
+      "display" : {
+        "centerImg" : "twitter.png",
+        "fontColor" : "#000000",
+        "headerTitle" : "소비성향 테스트",
+        "iconImg" : "ic_apple.png",
+        "labelText" : "현카TIME 더보기",
+        "mainColor" : "#00ACEE",
+        "mainTitle" : "현대카드와 함께\n나의 소비성향 알아보기!",
+        "size" : "400x400"
+      },
+      "displayType" : "default",
+      "openDate" : "20210101000023",
+      "updateDate" : "20210204130033"
+    },
+    "id_20210204130034" : {
+      "category" : "shop",
+      "closeDate" : "20210806000000",
+      "corpName" : "dive",
+      "display" : {
+        "backImg" : "bg_present.jpg",
+        "headerTitle" : "지금 테크",
+        "labelImg" : "pumba.png",
+        "mainTitle" : "새로 나왔어요,\n무선 이어폰",
+        "size" : "400x250"
+      },
+      "displayType" : "default",
+      "openDate" : "20210101000027",
+      "updateDate" : "20210204130034"
+    },
+    "id_20210204130035" : {
+      "category" : "coupon",
+      "closeDate" : "20210807000000",
+      "corpName" : "macdelivery",
+      "display" : {
+        "fontColor" : "#ffffff",
+        "headerTitle" : "맥딜리버리",
+        "labelImg" : "picsart.png",
+        "mainColor" : "#0CC6FB",
+        "mainTitle" : "1만 2천 이상 결제 시\n2천 M포인트 사용",
+        "size" : "400x250",
+        "subTitle" : "2021. 1. 1 ~ 7. 31"
+      },
+      "displayType" : "default",
+      "expireDate" : "20210731000000",
+      "openDate" : "20210101000025",
+      "updateDate" : "20210204130035"
+    },
+    "id_20210204130036" : {
+      "category" : "coupon",
+      "closeDate" : "20210808000000",
+      "corpName" : "hnm",
+      "display" : {
+        "fontColor" : "#000000",
+        "headerTitle" : "H&M",
+        "labelImg" : "justmarried.png",
+        "mainColor" : "#ffffff",
+        "mainTitle" : "5% M포인트 사용",
+        "size" : "400x250",
+        "subTitle" : "2020. 11. 1 ~ 2021. 4. 30"
+      },
+      "displayType" : "default",
+      "openDate" : "20210101000025",
+      "updateDate" : "20210204130036"
+    },
+    "id_20210204130037" : {
+      "category" : "feature",
+      "closeDate" : "20210809000000",
+      "corpName" : "hyundai",
+      "display" : {
+        "fontColor" : "#000000",
+        "headerTitle" : "단기카드대출",
+        "labelImg" : "instagram.png",
+        "mainColor" : "#ffffff",
+        "mainTitle" : "이자율 40% 할인",
+        "size" : "400x250"
+      },
+      "displayType" : "default",
+      "openDate" : "20210101000025",
+      "updateDate" : "20210204130037"
+    },
+    "id_20210204130038" : {
+      "category" : "feature",
+      "closeDate" : "20210810000000",
+      "corpName" : "hyundai",
+      "display" : {
+        "fontColor" : "#000000",
+        "headerTitle" : "해외 결제건",
+        "labelImg" : "ic_apple.png",
+        "mainColor" : "#ffffff",
+        "mainTitle" : "분할납부 결제(할부전환)\n최대 3개월 무이자할부",
+        "size" : "400x250",
+        "subTitle" : "2021. 1. 1 ~ 12. 31"
+      },
+      "displayType" : "default",
+      "expireDate" : "20210731000000",
+      "openDate" : "20210101000025",
+      "updateDate" : "20210204130038"
+    },
+    "id_20210204130039" : {
+      "category" : "shop",
+      "closeDate" : "20210811000000",
+      "corpName" : "dive",
+      "display" : {
+        "backImg" : "bg_sky.jpg",
+        "fontColor" : "#000000",
+        "headerTitle" : "요즘 여행",
+        "labelImg" : "chrome.png",
+        "mainColor" : "#ffffff",
+        "mainTitle" : "걷기 좋은\n전국의 둘레길 5",
+        "size" : "400x300"
+      },
+      "displayType" : "default",
+      "openDate" : "20210101000000",
+      "updateDate" : "20210204130039"
+    },
+    "id_20210204130040" : {
+      "category" : "shop",
+      "closeDate" : "20210812000000",
+      "corpName" : "dive",
+      "display" : {
+        "backImg" : "bg_watercolor.jpg",
+        "fontColor" : "#000000",
+        "headerTitle" : "지금 쇼핑",
+        "labelImg" : "pumba.png",
+        "mainColor" : "#ffffff",
+        "mainTitle" : "올해의 컬러로 입는\n원마일웨어",
+        "size" : "400x250"
+      },
+      "displayType" : "default",
+      "openDate" : "20210101000000",
+      "updateDate" : "20210204130040"
+    },
+    "id_20210204130041" : {
+      "category" : "shop",
+      "closeDate" : "20210813000000",
+      "corpName" : "dive",
+      "display" : {
+        "backImg" : "bg_livingroom.jpg",
+        "fontColor" : "#ffffff",
+        "headerTitle" : "지금 테크",
+        "mainTitle" : "이런 SNS, 어때요?",
+        "size" : "400x250"
+      },
+      "displayType" : "default",
+      "openDate" : "20210101000000",
+      "updateDate" : "20210204130041"
+    },
+    "id_20210204130042" : {
+      "category" : "news",
+      "closeDate" : "20210814000000",
+      "display" : {
+        "centerImg" : "king.png",
+        "fontColor" : "#000000",
+        "headerTitle" : "뉴스룸",
+        "iconImg" : "ic_apple.png",
+        "labelText" : "현카TIME 더보기",
+        "mainColor" : "#ffffff",
+        "mainTitle" : "카드에 스타벅스를 담다",
+        "size" : "400x400"
+      },
+      "displayType" : "default",
+      "openDate" : "20210101000003",
+      "updateDate" : "20210204130042"
+    },
+    "id_20210204130043" : {
+      "category" : "shop",
+      "closeDate" : "20210815000000",
+      "corpName" : "dive",
+      "display" : {
+        "centerImg" : "battleground.png",
+        "fontColor" : "#000000",
+        "headerTitle" : "요즘 맛집",
+        "labelImg" : "pumba.png",
+        "mainColor" : "#ffffff",
+        "mainTitle" : "1인용 냄비 요리 맛집",
+        "size" : "400x450"
+      },
+      "displayType" : "default",
+      "openDate" : "20210101000000",
+      "updateDate" : "20210204130043"
+    },
+    "id_20210204130050" : {
+      "category" : "shop",
+      "closeDate" : "20210706000000",
+      "corpName" : "dive",
+      "display" : {
+        "headerTitle" : "스타일 트렌드",
+        "labelImg" : "pumba.png",
+        "mainTitle" : "한겨울부터\n초봄까지 입어요, 셔켓",
+        "size" : "400x250"
+      },
+      "displayType" : "default",
+      "updateDate" : "20210204130050"
+    }
+  }
+}

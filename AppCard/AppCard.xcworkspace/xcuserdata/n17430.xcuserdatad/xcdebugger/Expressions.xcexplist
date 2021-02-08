@@ -3,6 +3,28 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "XCTestCase.getData(name:withExtension:):XCTextCase+Extension.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MainViewControllerTests.testNumberOfRowsInAnySectionShouldEqaulNumberOfOrdersToDisplay():MainViewControllerTests.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "sut">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MainViewControllerTests.setupMainViewController():MainViewControllerTests.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "sut">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MainPresenterTests.testPresentGetListShouldAskViewControllerToDisplayGetList():MainPresenterTests.swift">
+      </ContextState>
+      <ContextState
          contextName = "MainViewController.handlePan(_:):MainViewController.swift">
          <PersistentStrings>
             <PersistentString

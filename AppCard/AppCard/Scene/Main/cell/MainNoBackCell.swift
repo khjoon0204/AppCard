@@ -28,8 +28,8 @@ class MainNoBackCell: UITableViewCell {
         dataSource ds: Main.List) -> UITableViewCell
     {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "MainNoBackCell", for: indexPath) as? MainNoBackCell,
-              let ele: Main.List.ListElement = ds.object(indexOf: indexPath.row),
-              let d: Main.List.Display = ele.display
+              let ele: Main.ListElement = ds.object(indexOf: indexPath.row),
+              let d: Main.ListElement.Display = ele.display
         else {return UITableViewCell()}
         
         if let val = d.title, val.count > 0{

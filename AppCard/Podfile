@@ -12,4 +12,8 @@ target 'AppCard' do
     pod_list
 end
 
+target 'AppCardTests' do
+    pod_list
+end
+
 

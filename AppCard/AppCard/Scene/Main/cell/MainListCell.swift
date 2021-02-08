@@ -38,8 +38,8 @@ class MainListCell: UITableViewCell {
         dataSource ds: Main.List) -> UITableViewCell
     {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "MainListCell", for: indexPath) as? MainListCell,
-              let ele: Main.List.ListElement = ds.object(indexOf: indexPath.row),
-              let d: Main.List.Display = ele.display
+              let ele: Main.ListElement = ds.object(indexOf: indexPath.row),
+              let d: Main.ListElement.Display = ele.display
         else {return UITableViewCell()}
         
         // property set
@@ -81,9 +81,7 @@ class MainListCell: UITableViewCell {
         if let val = d.backImgData{
             cell.backImg.image = UIImage(data: val)
         }
-        else{
-            cell.backImg.image = nil
-        }
+        else{ cell.backImg.image = nil }
         
         if let val = d.labelImgData{
             cell.labelImgHeight0.priority = cell.HEIGHT0_ANCHOR_BREAK
@@ -102,7 +100,7 @@ class MainListCell: UITableViewCell {
             let color = UIColor(hex: val)
             cell.contentV.backgroundColor = color
         }
-        else{ cell.contentV.backgroundColor = .systemBackground }
+        else{ cell.contentV.backgroundColor = .white }
         
         if let val = d.fontColor, val.count > 0{
             let color = UIColor(hex: val)
