@@ -76,6 +76,35 @@ extension Main{
         internal convenience init(list: [Main.List.ListElement] = [], imageDownloadCompletion: ((Main.List?) -> Void)? = nil, objs: [DataSnapshot] = []) {
             self.init()
             self.imageDownloadCompletion = imageDownloadCompletion
+            initWith(objs: objs)
+//            initWithHigherOrdering(objs: objs)
+        }
+        
+        /// 고차함수용: O(2n)
+        /// - Parameter objs: <#objs description#>
+        func initWithHigherOrdering(objs: [DataSnapshot] = []){
+            var eleSet = Set<String>() // 중복제거용
+            self.list = objs.map({ //(<#DataSnapshot#>) -> T in
+                listElement(object: (key: $0.key as String, value: $0.value as AnyObject))
+            })
+            var index = 0
+            self.list = self.list.filter({ //(<#ListElement#>) -> Bool in
+                if $0.displayType == nil{return false}
+                if let key = $0.key{
+                    let oldCnt = eleSet.count
+                    eleSet.insert(key)
+                    if eleSet.count == oldCnt{return false}
+                }
+                else { return false }
+                setImageData(ele: $0, idx: index)
+                index += 1
+                return true
+            })
+        }
+        
+        /// 인덱스로 접근: O(n)
+        /// - Parameter objs: <#objs description#>
+        func initWith(objs: [DataSnapshot] = []){
             var eles: [Main.List.ListElement] = []
             var eleSet = Set<String>() // 중복제거용
             for i in 0..<objs.count{
@@ -90,6 +119,7 @@ extension Main{
             }
             self.list = eles
         }
+        
         
         /// <#Description#>
         /// - Parameters:

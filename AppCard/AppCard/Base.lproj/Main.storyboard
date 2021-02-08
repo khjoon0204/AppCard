@@ -361,16 +361,52 @@
                                     <constraint firstAttribute="bottom" secondItem="J9c-tw-jLd" secondAttribute="bottom" id="f2z-e5-Sey"/>
                                 </constraints>
                             </view>
-                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rUP-Uo-Cew">
-                                <rect key="frame" x="0.0" y="44" width="414" height="50"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="e9O-rK-o0g"/>
-                                </constraints>
-                            </view>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dna-Hz-czL">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rUP-Uo-Cew">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="94"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s7h-ma-fjd">
+                                        <rect key="frame" x="0.0" y="44" width="414" height="50"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="혜택" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UvN-0n-0h1">
+                                                <rect key="frame" x="261" y="15.5" width="28" height="19.5"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="금융" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zqW-7z-ZlJ">
+                                                <rect key="frame" x="309" y="15.5" width="28" height="19.5"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="앱카드" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fD0-NW-Kz3">
+                                                <rect key="frame" x="357" y="15.5" width="42" height="19.5"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="fD0-NW-Kz3" firstAttribute="leading" secondItem="zqW-7z-ZlJ" secondAttribute="trailing" constant="20" id="26V-vi-eOH"/>
+                                            <constraint firstItem="zqW-7z-ZlJ" firstAttribute="centerY" secondItem="s7h-ma-fjd" secondAttribute="centerY" id="Ay3-S4-5ll"/>
+                                            <constraint firstItem="zqW-7z-ZlJ" firstAttribute="leading" secondItem="UvN-0n-0h1" secondAttribute="trailing" constant="20" id="B33-Fc-WgY"/>
+                                            <constraint firstItem="UvN-0n-0h1" firstAttribute="centerY" secondItem="s7h-ma-fjd" secondAttribute="centerY" id="BLV-Rz-thk"/>
+                                            <constraint firstAttribute="trailing" secondItem="fD0-NW-Kz3" secondAttribute="trailing" constant="15" id="BV9-xf-d3G"/>
+                                            <constraint firstAttribute="height" constant="50" id="Pe8-IF-sct"/>
+                                            <constraint firstItem="fD0-NW-Kz3" firstAttribute="centerY" secondItem="s7h-ma-fjd" secondAttribute="centerY" id="var-Y3-cjg"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="s7h-ma-fjd" firstAttribute="leading" secondItem="rUP-Uo-Cew" secondAttribute="leading" id="2bS-6V-4j1"/>
+                                    <constraint firstItem="s7h-ma-fjd" firstAttribute="top" relation="greaterThanOrEqual" secondItem="rUP-Uo-Cew" secondAttribute="top" id="IBL-kW-gRa"/>
+                                    <constraint firstAttribute="trailing" secondItem="s7h-ma-fjd" secondAttribute="trailing" id="lkI-uw-gjt"/>
+                                    <constraint firstAttribute="bottom" secondItem="s7h-ma-fjd" secondAttribute="bottom" id="vV8-We-I91"/>
+                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gT4-25-Akr">
                                 <rect key="frame" x="0.0" y="712" width="414" height="800"/>
@@ -402,17 +438,18 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="WpL-km-AEX" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="1Dh-18-DIn"/>
+                            <constraint firstItem="rUP-Uo-Cew" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="5kd-EA-DgG"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="s7h-ma-fjd" secondAttribute="top" id="6qZ-SY-94I"/>
                             <constraint firstItem="gT4-25-Akr" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="9jB-8u-ahm"/>
                             <constraint firstAttribute="bottom" secondItem="Dna-Hz-czL" secondAttribute="bottom" id="Dy0-Wl-1tM"/>
                             <constraint firstItem="rUP-Uo-Cew" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="GOg-J8-gQj"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="WpL-km-AEX" secondAttribute="trailing" id="LcI-vc-4RH"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="WpL-km-AEX" secondAttribute="top" id="P1S-Yc-dFS"/>
                             <constraint firstItem="rUP-Uo-Cew" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="TUw-bV-Z8g"/>
                             <constraint firstItem="Dna-Hz-czL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="XJW-Cu-SgI"/>
                             <constraint firstItem="WpL-km-AEX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="YIV-zc-D1X"/>
                             <constraint firstItem="Dna-Hz-czL" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="b0M-Ns-rTi"/>
                             <constraint firstItem="Dna-Hz-czL" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="iCQ-u5-i31"/>
-                            <constraint firstItem="rUP-Uo-Cew" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="iNT-7t-FIP"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="WpL-km-AEX" secondAttribute="bottom" id="mia-RI-Nqd"/>
                             <constraint firstItem="gT4-25-Akr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="qkA-hY-2lH"/>
                             <constraint firstItem="gT4-25-Akr" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="650" id="u0p-bY-pcH"/>
@@ -420,7 +457,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="wY6-Ug-k1T"/>
                     <connections>
+                        <outlet property="appcardLabel" destination="fD0-NW-Kz3" id="2Ks-S4-nkp"/>
+                        <outlet property="bankingLabel" destination="zqW-7z-ZlJ" id="yOS-3J-Dfl"/>
+                        <outlet property="benefitLabel" destination="UvN-0n-0h1" id="Oaf-d6-AcT"/>
                         <outlet property="dimView" destination="Dna-Hz-czL" id="m2D-6I-59Z"/>
+                        <outlet property="headerContentView" destination="s7h-ma-fjd" id="SXe-LX-gse"/>
                         <outlet property="headerView" destination="rUP-Uo-Cew" id="KsF-S0-wKC"/>
                         <outlet property="swipeView" destination="gT4-25-Akr" id="Hv1-nV-hpI"/>
                         <outlet property="swipeViewBottom" destination="u0p-bY-pcH" id="gWz-mr-eZF"/>

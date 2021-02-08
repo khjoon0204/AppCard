@@ -22,7 +22,8 @@ class FBDatabase{
 //        }
 //    }
     
-    /// key 순으로 페이징
+    /// key 순으로 페이징.
+    /// 정렬은 현재 페이징쿼리를 하므로 서버에서 정렬한 목록의 x페이지 y사이즈에 해당하는 데이터를 내려줘야한다. Realtime database를 이용해 직접 정렬조건으로 요청해 원하는 데이터를 얻을 수있다. 정렬이 api단에서 이루어짐.
     /// - Parameters:
     ///   - lastKey:
     ///   - size: <#size description#>

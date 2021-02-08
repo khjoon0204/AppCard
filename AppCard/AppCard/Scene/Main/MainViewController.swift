@@ -20,13 +20,27 @@ protocol MainDisplayLogic: class
 
 class MainViewController: UIViewController, MainDisplayLogic
 {    
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!{
+        didSet{
+            tableView.contentInset = UIEdgeInsets(top: headerContentView.frame.height, left: 0, bottom: 0, right: 0)
+            tableView.delegate = self
+            tableView.dataSource = self
+        }
+    }
     @IBOutlet weak var dimView: UIView!
     @IBOutlet weak var swipeView: UIView!
     @IBOutlet weak var swipeViewBottom: NSLayoutConstraint!
     @IBOutlet weak var swipeViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var headerView: UIView!{
+        didSet{
+            headerView.layer.applySketchShadow(color: .black, alpha: 0.1, x: 0, y: 20, blur: 20, spread: 0)
+        }
+    }
+    @IBOutlet weak var headerContentView: UIView!
     @IBOutlet weak var webView: WKWebView!
+    @IBOutlet weak var benefitLabel: UILabel!
+    @IBOutlet weak var bankingLabel: UILabel!
+    @IBOutlet weak var appcardLabel: UILabel!
     lazy var SWIPE_TOP_LIMIT: CGFloat = headerView.frame.height
     lazy var SWIPE_BOTTOM_LIMIT: CGFloat = view.frame.height - (swipeViewHeight.constant - swipeViewBottom.constant)
     var interactor: MainBusinessLogic?
@@ -35,6 +49,7 @@ class MainViewController: UIViewController, MainDisplayLogic
     private(set) var list = Main.List(list: [])
     private var lastScrollY: CGFloat = 0    
     private var getListDone = false
+//    private var headerAlpha: CGFloat = 1
     
     // MARK: Object lifecycle
     
@@ -83,10 +98,9 @@ class MainViewController: UIViewController, MainDisplayLogic
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
         setupSwipeView()
         webViewLoadUrl()
-        tableView.delegate = self
-        tableView.dataSource = self
         interactor?.getList()
     }
     
@@ -97,7 +111,6 @@ class MainViewController: UIViewController, MainDisplayLogic
         self.list = viewModel.list
         tableView.reloadData()
     }
-    
     
 }
 
@@ -112,8 +125,6 @@ extension MainViewController{
         guard getListDone, let visibleRow = tableView.indexPathsForVisibleRows?.last?.row, visibleRow + Main.GetList.PAGE_SIZE > list.count else {return}
         print("visibleRow=\(visibleRow) list.count=\(list.count)")
         getListDone = false
-//        curPage += 1
-//        interactor?.getList(curPage: curPage, pageSize: PAGE_SIZE)        
         interactor?.getList()
     }
     
@@ -138,8 +149,11 @@ extension MainViewController{
         else {return}
         let up = (lastScrollY >= y)
         lastScrollY = y
+        
         UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseInOut]) {
             self.swipeView.frame.origin.y = up ? self.SWIPE_BOTTOM_LIMIT : self.view.frame.height
+//            self.headerView.backgroundColor = UIColor(white: 1, alpha: y / self.SWIPE_TOP_LIMIT)
+            self.headerView.backgroundColor = UIColor(white: 1, alpha: y < self.SWIPE_TOP_LIMIT ? 0 : 1)
         } completion: { (success) in
         }
     }
@@ -151,31 +165,44 @@ extension MainViewController{
     }
     
     @objc func handlePan(_ recognizer: UIPanGestureRecognizer){
+        let div = (swipeView.frame.origin.y - SWIPE_TOP_LIMIT) / (SWIPE_BOTTOM_LIMIT - SWIPE_TOP_LIMIT)
         moveSwipeView(recognizer)
-        dimming()
-        moveToEdge(recognizer)
+        dimView.alpha = 1 - div
+        let headerAlpha = tableView.contentOffset.y > self.SWIPE_TOP_LIMIT ? div : 0
+        headerView.backgroundColor = UIColor(white: 1, alpha: headerAlpha)
+        headerLabelAnimation(toColor: UIColor(white: 1 - div, alpha: 1))
+        benefitLabel.layerAnimation(toColor: UIColor(white: 1 - div, alpha: 1), animationKey: "key\(benefitLabel.tag)")
+        moveToEdge(recognizer, div: div)
     }
     
-    private func moveToEdge(_ recognizer: UIPanGestureRecognizer){
+    private func moveToEdge(_ recognizer: UIPanGestureRecognizer, div: CGFloat){
         guard recognizer.state == .ended else {return}
         let toTop = swipeView.frame.origin.y < (view.frame.height)/2
+        var headerAlpha: CGFloat = toTop ? 0 : 1
+        headerAlpha = tableView.contentOffset.y < self.SWIPE_TOP_LIMIT ? 0 : headerAlpha
         UIView.animate(withDuration: 0.5) {
             self.swipeView.frame.origin.y = toTop ? self.SWIPE_TOP_LIMIT : self.SWIPE_BOTTOM_LIMIT
-            self.dimming()
+            self.dimView.alpha = toTop ? 1 : 0
+            self.headerView.backgroundColor = UIColor(white: 1, alpha: headerAlpha)
         } completion: { (success) in
-            
         }
+        headerLabelAnimation(toColor: toTop ? .white : .black)
     }
     
-    private func dimming(){
-        let div = swipeView.frame.origin.y / (SWIPE_BOTTOM_LIMIT - SWIPE_TOP_LIMIT)
-//        print("dimView.alpha=\(dimView.alpha) swipeView.frame.origin.y=\(swipeView.frame.origin.y) / view.frame.height=\(view.frame.height) div=\(div)")
-        dimView.alpha = 1 - div
+    func headerLabelAnimation(toColor to: UIColor){
+        benefitLabel.layerAnimation(toColor: to, animationKey: "key\(benefitLabel.tag)")
+        bankingLabel.layerAnimation(toColor: to, animationKey: "key\(bankingLabel.tag)")
+        appcardLabel.layerAnimation(toColor: to, animationKey: "key\(appcardLabel.tag)")
     }
+    
+//    private func dimming(div: CGFloat){
+//        //        print("dimView.alpha=\(dimView.alpha) swipeView.frame.origin.y=\(swipeView.frame.origin.y) / view.frame.height=\(view.frame.height) div=\(div)")
+//        dimView.alpha = 1 - div
+//    }
     
     private func moveSwipeView(_ recognizer: UIPanGestureRecognizer){
         let y = swipeView.frame.origin.y
-//        let isUP = prePosition > y
+        //        let isUP = prePosition > y
         let isTopOver = (y < SWIPE_TOP_LIMIT)
         let isBotBelow = (y > SWIPE_BOTTOM_LIMIT)
         defer{
@@ -185,7 +212,7 @@ extension MainViewController{
         guard !isBotBelow else {swipeView.frame.origin.y = SWIPE_BOTTOM_LIMIT;return}
         guard !isTopOver else {swipeView.frame.origin.y = SWIPE_TOP_LIMIT;return}
         let moveY = swipeView.frame.origin.y + recognizer.translation(in: swipeView).y
-//        print("swipeView.y=\(swipeView.frame.origin.y) moveY=\(moveY) isUP=\(isUP) isTopOver=\(isTopOver) isBotBelow=\(isBotBelow)")
+        //        print("swipeView.y=\(swipeView.frame.origin.y) moveY=\(moveY) isUP=\(isUP) isTopOver=\(isTopOver) isBotBelow=\(isBotBelow)")
         guard moveY <= SWIPE_BOTTOM_LIMIT else {return}
         guard moveY >= SWIPE_TOP_LIMIT else {return}
         swipeView.frame.origin.y = moveY
@@ -213,14 +240,30 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath)
     }
-
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         guard let sizeString = list.object(indexOf: indexPath.row)?.display?.size,
               case let sizeArray = sizeString.split(separator: "x"),
-//              let width = NumberFormatter().number(from: String(sizeArray[0])),
+              //              let width = NumberFormatter().number(from: String(sizeArray[0])),
               let height = NumberFormatter().number(from: String(sizeArray[1]))
         else { return UITableView.automaticDimension }
         return CGFloat(truncating: height)
     }
+    
+}
 
+private extension UILabel{
+    func layerAnimation(toColor to: UIColor, animationKey key: String) {
+        let changeColor = CATransition()
+        changeColor.duration = 0.5
+        CATransaction.begin()
+        CATransaction.setCompletionBlock {
+            self.textColor = to
+            self.layer.add(changeColor, forKey: key)
+        }
+        self.textColor = to
+        self.layer.add(changeColor, forKey: key)
+        CATransaction.commit()
+    }
+    
 }
