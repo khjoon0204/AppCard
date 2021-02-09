@@ -31,7 +31,7 @@ enum Main
         }
     }
         
-    // MARK: - ListElement
+    // MARK: - ListElement Model
     struct ListElement: Codable {        
         var category : CategoryType?
         var displayType: DisplayType?
@@ -124,7 +124,7 @@ extension Main{
         }
         
         
-        /// <#Description#>
+        /// ListElement set
         /// - Parameters:
         ///   - i: <#i description#>
         ///   - idx: self.listModel.list index
@@ -207,7 +207,6 @@ extension Main{
                 })
             }
         }
-        
         
         private func imageDownloadCompleteCancelingPrevious(){
             NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(imageDownloadComplete), object: nil)

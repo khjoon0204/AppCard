@@ -14,6 +14,7 @@ import UIKit
 
 class MainWorker
 {
+    
 //    func list(completion: ((Main.List?) -> Void)?){
 //        FBDatabase.list { (objs) in
 //            if let objs = objs, case let list = Main.List(objs: objs), list.list.count > 0{

@@ -13,6 +13,7 @@ class FBStorage{
     // Points to the root reference
     static private(set) var storageRef = Storage.storage().reference()
     
+    /// uiimage 반환
 //    static func image(fileName: String, getData: (( _ image: UIImage?) -> Void)?){
 //        // Create a reference to the file you want to download
 //        let islandRef = FBStorage.storageRef.child("images").child(fileName)
@@ -28,6 +29,10 @@ class FBStorage{
 //        }
 //    }
     
+    /// image data 반환
+    /// - Parameters:
+    ///   - fileName: <#fileName description#>
+    ///   - getData: <#getData description#>
     static func imageData(fileName: String, getData: ((_ data: Data?) -> Void)?){
         // Create a reference to the file you want to download
         let islandRef = FBStorage.storageRef.child("images").child(fileName)

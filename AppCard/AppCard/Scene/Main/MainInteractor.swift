@@ -14,7 +14,6 @@ import UIKit
 
 protocol MainBusinessLogic
 {
-//    func getList(curPage: Int, pageSize: Int)
     func getList()
     func _list() -> Main.List?
 }
@@ -45,19 +44,6 @@ class MainInteractor: MainBusinessLogic, MainDataStore
             else{ /* failure */ }            
         }
     }
-    
-//    func getList()
-//    {
-//        worker.listPagination(startingAt: updateDate, size: Main.GetList.PAGE_SIZE) { (list) in
-//            if let list = list{
-//                self.list.append(contensOf: list)
-//                print(self.list.list.count)
-//                self.updateDate = self.list.object(indexOf: self.list.count-1)?.updateDate ?? ""
-//                let response = Main.GetList.Response(list: self.list)
-//                self.presenter?.presentGetList(response: response)
-//            }
-//        }
-//    }
     
     // MARK: Getter
     func _list() -> Main.List?

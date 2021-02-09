@@ -28,7 +28,7 @@ class MainListCell: UITableViewCell {
     @IBOutlet weak var labelImgHeight0: NSLayoutConstraint!
     @IBOutlet weak var centerImg: UIImageView!
     @IBOutlet weak var centerImgHeight0: NSLayoutConstraint!
-    let f = DateFormatter(withFormat: "yyyyMMddhhmmss")
+    let dateFormatter = DateFormatter(withFormat: "yyyyMMddhhmmss")
     
     // MARK: Cell Config
     static func config(
@@ -62,7 +62,7 @@ class MainListCell: UITableViewCell {
         else{ cell.subTitleHeight0.priority = cell.HEIGHT0_ANCHOR_CONNECT }
         
         if let val = ele.dDayDate, val.count > 0,
-           let dateDDay = cell.f.date(from: val),
+           let dateDDay = cell.dateFormatter.date(from: val),
            case let days = Calendar.current.dateComponents([.day], from: Date(), to: dateDDay)
         {
             cell.dDayHeight0.priority = cell.HEIGHT0_ANCHOR_BREAK

@@ -49,7 +49,6 @@ class MainViewController: UIViewController, MainDisplayLogic
     var list = Main.List(list: [])
     private var lastScrollY: CGFloat = 0    
     private var getListDone = false
-//    private var headerAlpha: CGFloat = 1
     
     // MARK: Object lifecycle
     
@@ -194,11 +193,6 @@ extension MainViewController{
         bankingLabel.layerAnimation(toColor: to, animationKey: "key\(bankingLabel.tag)")
         appcardLabel.layerAnimation(toColor: to, animationKey: "key\(appcardLabel.tag)")
     }
-    
-//    private func dimming(div: CGFloat){
-//        //        print("dimView.alpha=\(dimView.alpha) swipeView.frame.origin.y=\(swipeView.frame.origin.y) / view.frame.height=\(view.frame.height) div=\(div)")
-//        dimView.alpha = 1 - div
-//    }
     
     private func moveSwipeView(_ recognizer: UIPanGestureRecognizer){
         let y = swipeView.frame.origin.y
