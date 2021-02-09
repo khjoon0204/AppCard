@@ -12,7 +12,6 @@
 
 @testable import AppCard
 import XCTest
-import Firebase
 
 class MainInteractorTests: XCTestCase
 {
@@ -25,7 +24,7 @@ class MainInteractorTests: XCTestCase
     override func setUp()
     {
         super.setUp()
-        FirebaseApp.configure()
+        
         setupMainInteractor()
     }
     
@@ -66,7 +65,7 @@ class MainInteractorTests: XCTestCase
         // MARK: Spied methods
         
         override func listPagination(startingAt key: String, size: Int, completion: ((Main.List?) -> Void)?) {
-            completion?(Seeds.GetList.mock())
+            completion?(Seeds.GetList.mock)
             getListCalled = true
             //        FBDatabase.listPagination(startingAt: key, size: UInt(size)) { (objs) in
             //            if let objs = objs{ // list.list.count > 0

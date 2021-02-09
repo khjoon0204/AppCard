@@ -12,7 +12,6 @@
 
 @testable import AppCard
 import XCTest
-import Firebase
 
 class MainPresenterTests: XCTestCase
 {
@@ -25,7 +24,6 @@ class MainPresenterTests: XCTestCase
     override func setUp()
     {
         super.setUp()
-//        FirebaseApp.configure()
         setupMainPresenter()
     }
     
@@ -71,15 +69,15 @@ class MainPresenterTests: XCTestCase
         sut.viewController = mainDisplayLogicSpy
         
         // When
-        let response = Main.GetList.Response(list: Seeds.GetList.mock())
+        let response = Main.GetList.Response(list: Seeds.GetList.mock)
         sut.presentGetList(response: response)
         
         // Then
         let displayedGetList = mainDisplayLogicSpy.viewModel.list        
         if let first = displayedGetList.list.first{
-            XCTAssertEqual(first.category, .noti, "Presenting fetched orders should properly format order ID")
+            XCTAssertEqual(first.category, .noti, "Presenting된 list의 category가 일치해야한다")
         }
-        XCTAssertEqual(displayedGetList.count, 46, "Presenting fetched orders should properly format order ID")
+        XCTAssertEqual(displayedGetList.count, 46, "Presenting된 list의 count가 일치해야한다")
     }
     
     func testPresentGetListShouldAskViewControllerToDisplayGetList()
@@ -89,12 +87,13 @@ class MainPresenterTests: XCTestCase
         sut.viewController = mainDisplayLogicSpy
         
         // When
-        let list = Seeds.GetList.mock()
+        let list = Seeds.GetList.mock
         let response = Main.GetList.Response(list: list)
         sut.presentGetList(response: response)
         
         // Then
-        XCTAssert(mainDisplayLogicSpy.displayGetListCalled, "Presenting fetched orders should ask view controller to display them")
+        XCTAssert(mainDisplayLogicSpy.displayGetListCalled, "Presenting된 list가 view controller에 보여져야 한다")
+        
     }
 }
 

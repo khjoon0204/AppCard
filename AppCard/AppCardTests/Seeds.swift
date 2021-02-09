@@ -10,7 +10,10 @@ struct Seeds
 {
     struct GetList
     {
-        static func mock() -> Main.List{
+        static var mock: Main.List = {
+            return _mock()
+        }()
+        static func _mock() -> Main.List{
             var eles: [Main.ListElement] = []
             func getData(name: String, withExtension: String = "json") -> Data {
                 let bundle = Bundle(identifier: "com.hjoon.AppCardTests")!

@@ -10,7 +10,6 @@
 //  see http://clean-swift.com
 //
 @testable import AppCard
-import Firebase
 import XCTest
 
 class MainViewControllerTests: XCTestCase
@@ -26,7 +25,6 @@ class MainViewControllerTests: XCTestCase
     {
         super.setUp()
         window = UIWindow()
-        //    FirebaseApp.configure()
         setupMainViewController()
     }
     
@@ -113,50 +111,56 @@ class MainViewControllerTests: XCTestCase
         sut.tableView = tableViewSpy
         
         // When
-        let viewModel = Main.GetList.ViewModel(list: Seeds.GetList.mock())
+        let viewModel = Main.GetList.ViewModel(list: Seeds.GetList.mock)
         sut.displayGetList(viewModel: viewModel)
         
         // Then
-        XCTAssert(tableViewSpy.reloadDataCalled, "Displaying fetched orders should reload the table view")
+        XCTAssert(tableViewSpy.reloadDataCalled, "Displaying된 get list는 table view를 reload해야한다")
     }
     
     func testNumberOfSectionsInTableViewShouldAlwaysBeOne()
     {
         // Given
         let tableView = sut.tableView
+        let list = Seeds.GetList.mock
         
         // When
+        sut.displayGetList(viewModel: Main.GetList.ViewModel(list: list))
         let numberOfRows = sut.tableView(tableView!, numberOfRowsInSection: 0)
         
         // Then
-        XCTAssertEqual(numberOfRows, 10, "The number of table view sections should always be 46")
+        XCTAssertEqual(numberOfRows, 46, "table view rows 숫자는 46이어야 한다")
+        
     }
     
     func testNumberOfRowsInAnySectionShouldEqaulNumberOfOrdersToDisplay()
     {
         // Given
         let tableView = sut.tableView
-        sut.list = Seeds.GetList.mock()
+        sut.list = Seeds.GetList.mock
         
         // When
         let numberOfRows = sut.tableView(tableView!, numberOfRowsInSection: 0)
         
         // Then
-        XCTAssertEqual(numberOfRows, sut.list.count, "The number of table view rows should equal the number of orders to display")
+        XCTAssertEqual(numberOfRows, sut.list.count, "table view rows 숫자는 보여진 get list 숫자와 동일해아한다")
+        
     }
     
-    func testShouldConfigureTableViewCellToDisplayOrder()
-    {
-        // Given
-        let tableView = sut.tableView
-        sut.list = Seeds.GetList.mock()
-        
-        // When
-        let indexPath = IndexPath(row: 0, section: 0)
-        let cell = sut.tableView(tableView!, cellForRowAt: indexPath)
-        
-        // Then
-        XCTAssertEqual(cell.textLabel?.text, "6/29/07", "A properly configured table view cell should display the order date")
-        XCTAssertEqual(cell.detailTextLabel?.text, "$1.23", "A properly configured table view cell should display the order total")
-    }
+//    func testShouldConfigureTableViewCellToDisplayOrder()
+//    {
+//        // Given
+//        let tableView = sut.tableView
+//        let list = Seeds.GetList.mock
+//
+//        // When
+//        sut.displayGetList(viewModel: Main.GetList.ViewModel(list: list))
+//        let indexPath1 = IndexPath(row: 1, section: 0)
+//        let cell1: MainListCell = sut.tableView(tableView!, cellForRowAt: indexPath1) as! MainListCell
+//
+//        // Then
+//
+//        XCTAssertEqual(cell1.mainTitle.text, "신상이에요", "정확한A properly configured table view cell should display the order date")
+//        XCTAssertEqual(cell1.subTitle.text, "쏘카가 필요한 모든 순간\n쏘카 카드", "A properly configured table view cell should display the order total")
+//    }
 }
