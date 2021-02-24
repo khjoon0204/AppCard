@@ -151,7 +151,6 @@ extension MainViewController{
         
         UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseInOut]) {
             self.swipeView.frame.origin.y = up ? self.SWIPE_BOTTOM_LIMIT : self.view.frame.height
-//            self.headerView.backgroundColor = UIColor(white: 1, alpha: y / self.SWIPE_TOP_LIMIT)
             self.headerView.backgroundColor = UIColor(white: 1, alpha: y < self.SWIPE_TOP_LIMIT ? 0 : 1)
         } completion: { (success) in
         }
@@ -170,7 +169,6 @@ extension MainViewController{
         let headerAlpha = tableView.contentOffset.y > self.SWIPE_TOP_LIMIT ? div : 0
         headerView.backgroundColor = UIColor(white: 1, alpha: headerAlpha)
         headerLabelAnimation(toColor: UIColor(white: 1 - div, alpha: 1))
-        benefitLabel.layerAnimation(toColor: UIColor(white: 1 - div, alpha: 1), animationKey: "key\(benefitLabel.tag)")
         moveToEdge(recognizer, div: div)
     }
     
